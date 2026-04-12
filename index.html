@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="APSC 2026">
+<meta name="theme-color" content="#1B3D2F">
+<title>APSC CCE 2026</title>
+<link rel="manifest" href="manifest.json">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--forest:#1B3D2F;--forest-mid:#2D5E47;--forest-light:#E8F2ED;--forest-pale:#F2F8F4;--amber:#C47A2B;--amber-light:#FDF0E0;--red:#A32D2D;--red-light:#FCEBEB;--cream:#F7F5F0;--white:#FEFEFE;--ink:#181818;--ink-mid:#444;--ink-light:#777;--ink-pale:#AAA;--border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);--r:12px;--rs:8px;--safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden}
+.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--cream)}
+.hdr{background:var(--forest);color:white;padding:calc(var(--safe-top) + 14px) 18px 14px;position:sticky;top:0;z-index:100}
+.hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.logo{width:30px;height:30px;background:var(--amber);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:white;flex-shrink:0}
+.hdr-title{font-size:15px;font-weight:600}
+.hdr-sub{font-size:11px;opacity:.6;margin-top:1px}
+.hdr-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pbadge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,.15)}
+.pbadge.ph1{background:rgba(196,122,43,.35)}
+.pbadge.ph2{background:rgba(255,255,255,.15)}
+.pbadge.ph3{background:rgba(196,122,43,.35)}
+.pbadge.ph4{background:rgba(163,45,45,.4)}
+.dctr{font-family:'Space Mono',monospace;font-size:11px;opacity:.6}
+.prog-track{height:3px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
+.prog-fill{height:100%;background:var(--amber);border-radius:2px;transition:width .5s ease}
+.tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:calc(var(--safe-top) + 88px);z-index:99}
+.tabs::-webkit-scrollbar{display:none}
+.tb{flex-shrink:0;padding:11px 14px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;color:var(--ink-light);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
+.tb.active{color:var(--forest);border-bottom-color:var(--forest)}
+.main{flex:1;padding:14px;padding-bottom:calc(20px + var(--safe-bottom))}
+.tc{display:none}
+.tc.active{display:block}
+.card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px}
+.metric-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.metric{background:var(--white);border:1px solid var(--border);border-radius:var(--rs);padding:12px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.mlbl{font-size:10px;color:var(--ink-light);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px}
+.mval{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--forest)}
+.guidance-card{border-left:4px solid var(--forest);background:var(--forest-pale);border-radius:0 var(--rs) var(--rs) 0;padding:13px 15px;margin-bottom:12px;font-size:13px;line-height:1.65;color:var(--ink-mid)}
+.g-title{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);margin-bottom:5px}
+.alloc-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
+.alloc-row:last-child{border-bottom:none}
+.alloc-time{width:36px;height:36px;border-radius:var(--rs);background:var(--forest-pale);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--forest);flex-shrink:0}
+.alloc-info{flex:1}
+.alloc-name{font-size:13px;font-weight:500}
+.alloc-note{font-size:11px;color:var(--ink-light)}
+.alloc-bar-wrap{width:40px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
+.alloc-bar{height:100%;background:var(--forest);border-radius:2px}
+.insight-row{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.insight-row:last-child{border-bottom:none}
+.iflag{font-size:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.fc{background:var(--red-light);color:var(--red)}
+.fw{background:var(--amber-light);color:#854F0B}
+.fo{background:var(--forest-light);color:var(--forest)}
+.itext{font-size:13px;color:var(--ink-mid);line-height:1.5}
+.today-header{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.today-date{font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:var(--forest);margin-bottom:3px}
+.today-meta{font-size:12px;color:var(--ink-light);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.pd-inline{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0}
+.pd1{background:var(--forest)}.pd2{background:#534AB7}.pd3{background:var(--amber)}.pd4{background:var(--red)}
+.today-prog-row{display:flex;align-items:center;gap:10px}
+.today-prog-track{flex:1;height:5px;background:var(--cream);border-radius:3px;overflow:hidden}
+.today-prog-fill{height:100%;background:var(--forest);border-radius:3px;transition:width .3s}
+.today-prog-text{font-size:12px;font-weight:600;color:var(--forest);white-space:nowrap}
+.section-lbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-pale);margin:16px 0 8px 0}
+.task-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:opacity .2s}
+.task-card.done{opacity:.5}
+.task-card.rescheduled{border-left:3px solid var(--amber)}
+.task-from{font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px;display:flex;align-items:center;gap:5px}
+.task-row{display:flex;align-items:flex-start;gap:12px}
+.chk{width:24px;height:24px;border-radius:6px;border:2px solid var(--border-strong);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--forest);font-weight:700;transition:all .15s;-webkit-appearance:none;margin-top:1px}
+.chk.checked{background:var(--forest-light);border-color:var(--forest)}
+.task-body{flex:1}
+.task-subj{font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:3px}
+.task-text{font-size:14px;color:var(--ink);line-height:1.45}
+.task-text.exam-text{color:var(--red);font-weight:600}
+.urg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px}
+.reshuffle-btn{width:100%;padding:14px;background:var(--forest);color:white;border:none;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:16px;letter-spacing:.01em;transition:opacity .15s}
+.reshuffle-btn:active{opacity:.85}
+.all-done{background:var(--forest-pale);border:1px solid var(--forest-light);border-radius:var(--r);padding:20px;text-align:center;color:var(--forest)}
+.all-done-icon{font-size:28px;margin-bottom:6px}
+.all-done-title{font-size:15px;font-weight:600}
+.all-done-sub{font-size:13px;opacity:.7;margin-top:4px}
+.empty-day{background:var(--cream);border-radius:var(--r);padding:20px;text-align:center;color:var(--ink-light);font-size:14px}
+.overflow-warn{background:var(--red-light);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--red);line-height:1.5}
+.exam-banner{background:var(--forest);color:white;border-radius:var(--r);padding:28px 20px;text-align:center;margin-bottom:16px}
+.exam-banner-title{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;margin-bottom:4px}
+.exam-banner-sub{font-size:14px;opacity:.8}
+.exam-seq{font-size:12px;opacity:.65;margin-top:10px;line-height:1.6}
+.week-tabs{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:12px}
+.wk-btn{padding:5px 10px;font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;border-radius:20px;border:1.5px solid var(--border-strong);background:var(--white);color:var(--ink-light);cursor:pointer;transition:all .12s;display:flex;align-items:center;gap:4px}
+.wk-btn.active{background:var(--forest);color:white;border-color:var(--forest)}
+.wk-done{font-size:10px;background:rgba(0,0,0,.15);padding:1px 5px;border-radius:10px}
+.wk-btn.active .wk-done{background:rgba(255,255,255,.25)}
+.week-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:14px}
+.week-lbl{font-size:13px;font-weight:600;flex:1;line-height:1.4}
+.sched-day{padding:10px 0;border-bottom:1px solid var(--border)}
+.sched-day:last-child{border-bottom:none}
+.sched-day.is-today{background:var(--forest-pale);margin:0 -14px;padding:10px 14px;border-radius:var(--rs)}
+.sched-day.is-past{opacity:.55}
+.sched-day-lbl{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light);margin-bottom:7px}
+.sched-day-lbl.is-today-lbl{color:var(--forest)}
+.sched-day-lbl.exam-lbl{color:var(--red)}
+.sched-task{display:flex;align-items:flex-start;gap:8px;margin-bottom:5px;font-size:13px;color:var(--ink-mid)}
+.sched-task:last-child{margin-bottom:0}
+.sched-task.done-task{opacity:.45;text-decoration:line-through}
+.sched-task.moved-away{opacity:.4;font-style:italic}
+.sched-task.incoming{color:var(--amber);font-style:italic}
+.sched-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
+.sched-txt{flex:1;line-height:1.4}
+.badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.badge-resched{background:var(--amber-light);color:#854F0B}
+.badge-moved{background:var(--red-light);color:var(--red)}
+.badge-incoming{background:var(--amber-light);color:#854F0B}
+.subject-row{margin-bottom:13px}
+.subj-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.subj-name{font-size:14px;font-weight:500;display:flex;align-items:center;gap:7px}
+.p-pill{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:4px}
+.p-crit{background:var(--red-light);color:var(--red)}
+.p-high{background:var(--amber-light);color:#854F0B}
+.p-maint{background:var(--forest-light);color:var(--forest)}
+.subj-qs{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--forest)}
+.subj-bar-track{height:7px;background:var(--cream);border-radius:4px;overflow:hidden;margin-bottom:3px}
+.subj-bar-fill{height:100%;border-radius:4px}
+.bar-c{background:#E24B4A}.bar-h{background:var(--amber)}.bar-m{background:var(--forest-mid)}
+.subj-note{font-size:12px;color:var(--ink-light)}
+.trend-table{width:100%;border-collapse:collapse;font-size:12px}
+.trend-table th{text-align:left;padding:5px 4px;font-weight:700;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--border-strong)}
+.trend-table td{padding:6px 4px;border-bottom:1px solid var(--border);color:var(--ink)}
+.trend-table tr:last-child td{border-bottom:none}
+.tu{color:var(--forest);font-weight:700}
+.td{color:var(--red);font-weight:700}
+.tn{color:var(--ink-light);font-weight:700}
+.slider-row{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.slider-lbl{font-size:13px;color:var(--ink-mid);min-width:95px;font-weight:500}
+input[type=range]{flex:1;-webkit-appearance:none;height:4px;border-radius:2px;background:var(--border-strong);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;border-radius:50%;background:var(--forest);cursor:pointer;border:3px solid white;box-shadow:0 1px 4px rgba(0,0,0,.2)}
+.slider-val{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;min-width:34px;text-align:right;color:var(--forest)}
+.score-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.score-metric{background:var(--cream);border-radius:var(--rs);padding:12px;text-align:center}
+.smlbl{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);font-weight:700;margin-bottom:3px}
+.smval{font-family:'Space Mono',monospace;font-size:20px;font-weight:700}
+.score-advice{padding:13px 15px;border-radius:var(--rs);font-size:13px;line-height:1.6;border-left:4px solid;margin-bottom:14px}
+.adv-g{background:var(--forest-pale);border-color:var(--forest);color:var(--ink-mid)}
+.adv-w{background:var(--amber-light);border-color:var(--amber);color:var(--ink-mid)}
+.adv-b{background:var(--red-light);border-color:var(--red);color:var(--ink-mid)}
+.adv-strong{font-weight:600;color:var(--ink)}
+.target-row{display:flex;justify-content:space-between;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--border)}
+.target-row:last-child{border-bottom:none}
+.t-subj{font-size:13px;font-weight:500}
+.t-note{font-size:11px;color:var(--ink-light)}
+.t-score{text-align:right;flex-shrink:0;padding-left:10px}
+.t-frac{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--forest)}
+.t-pct{font-size:11px;color:var(--ink-light)}
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--forest);color:white;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="hdr">
+    <div class="hdr-top">
+      <div class="logo">A</div>
+      <div><div class="hdr-title">APSC CCE 2026</div><div class="hdr-sub">Dynamic Study Planner</div></div>
+    </div>
+    <div class="hdr-meta">
+      <span id="phase-badge" class="pbadge ph1">Phase 1: Calibrate</span>
+      <span id="day-counter" class="dctr">Day 1 · 84 left</span>
+    </div>
+    <div class="prog-track"><div id="prog-fill" class="prog-fill" style="width:1%"></div></div>
+  </header>
+  <nav class="tabs">
+    <button class="tb active" data-tab="today">Today</button>
+    <button class="tb" data-tab="dashboard">Dashboard</button>
+    <button class="tb" data-tab="schedule">Schedule</button>
+    <button class="tb" data-tab="subjects">Subjects</button>
+    <button class="tb" data-tab="score">Score</button>
+  </nav>
+  <main class="main">
+    <div id="tab-today" class="tc active"></div>
+    <div id="tab-dashboard" class="tc"></div>
+    <div id="tab-schedule" class="tc"></div>
+    <div id="tab-subjects" class="tc"></div>
+    <div id="tab-score" class="tc"></div>
+  </main>
+</div>
+<div id="toast"></div>
+
+<script>
+// ============================================================
+// CONSTANTS
+// ============================================================
+const APP_START = new Date('2026-04-12T00:00:00');
+const EXAM_ISO = '2026-07-05';
+const CUTOFF_ISO = '2026-07-02';
+const STORAGE_KEY = 'apsc_dynamic_v3';
+
+// ============================================================
+// SCHEDULE DATA (12 weeks × 7 days × 2 blocks)
+// ============================================================
+const SD = [
+  {wk:1,ph:1,focus:'Take 2 PYQ papers. Map gaps. Start Assam History + CA habit.',days:[
+    {b1:'PYQ 2024 full mock (2 hrs strict)',b2:'Mock analysis — mark subject-wise wrong answers'},
+    {b1:'Assam History — Varman dynasty + Kamarupa kingdom',b2:'Polity — Constitution basics + CA 30 min'},
+    {b1:'Assam History — Ahom kingdom (early period)',b2:'Polity — Fundamental Rights + CA 30 min'},
+    {b1:'Assam History — Ahom peak: Saraighat, Lachit Borphukan',b2:'Polity — DPSP + Fundamental Duties + CA 30 min'},
+    {b1:'Assam History — British entry + Yandabo Treaty 1826',b2:'Economy basics: GDP, GNP, fiscal deficit + CA 30 min'},
+    {b1:'Assam GK — Tribes: Bodo, Mising, Karbi, Tiwa overview',b2:'S&T — Physics: friction, gravity, circular motion + CA'},
+    {b1:'PYQ 2023 — extract and solve all Assam questions only',b2:'Polity — Parliament, Rajya Sabha, Money Bill + CA 30 min'},
+  ]},
+  {wk:2,ph:1,focus:'Lock Polity foundation. Start Assam GK culture. First full mock Sunday.',days:[
+    {b1:'PYQ 2022 full mock + analysis (2 hrs)',b2:'Assam GK Ch 1 Lucent IAS + CA weekly compile'},
+    {b1:'Assam History — Ahom-Mughal wars 1615–1671',b2:'Polity — State legislature + Governor + CA 30 min'},
+    {b1:'Assam GK — Literature: Sankardeva, Madhavdeva, works',b2:'Polity — President + Judiciary + CA 30 min'},
+    {b1:'Assam History — Modern era: Assam Accord, IMDT Act',b2:'Economy — Budget, fiscal deficit, Interim Budget + CA'},
+    {b1:'Assam GK — Awards: Siu-Ka-Pha, Kalicharan Brahma Award',b2:'Env — Biodiversity basics, Protected areas NE India + CA'},
+    {b1:'Assam Geography — Brahmaputra tributaries: north and south bank',b2:'S&T — Chemistry: solutions, elements in sugar + CA'},
+    {b1:'Assam History — key dates timeline drill (chronology questions)',b2:'Polity revision sprint + CA Phase 1 compile'},
+  ]},
+  {wk:3,ph:2,focus:'Economy now a major subject. Assam GK 50 min daily. Mock every Sunday.',days:[
+    {b1:'Full mock + detailed score analysis',b2:'Economy — Rostow model, Lorenz curve, Gini coefficient + CA'},
+    {b1:'Assam GK — Charaideo Maidams, Satras, beels and wetlands',b2:'Economy — HDI, poverty indices, NITI Aayog MPI + CA'},
+    {b1:'Assam History — Buranjis: Satsari, Kali Bharat, Weissali',b2:'Polity — Election Commission, Delimitation Commission + CA'},
+    {b1:'Assam GK — Govt schemes: Orunodoi, MMUA, Atmanirbhar Portal',b2:'Env — Protected areas NE India, Ramsar sites + CA'},
+    {b1:'Assam Geography — Districts, borders, agroclimatic zones',b2:'S&T — Biology: miRNA, biofuels, bioremediation + CA'},
+    {b1:'Assam GK — Folk dances by community: Hacha Kekan, Baidima, Bisuyo',b2:'Economy — Monetary policy, RBI, repo rate + CA'},
+    {b1:'PYQ Assam combined drill (2022 + 2023 + 2024)',b2:'Error analysis — weak Assam topics noted in notebook'},
+  ]},
+  {wk:4,ph:2,focus:'Contemporary Assam + NE connectivity. Sixth Schedule.',days:[
+    {b1:'Full mock + analysis',b2:'Assam GK — universities, institutions (Tezpur, Bhattadev) + CA'},
+    {b1:'Assam GK — Autonomous councils + Sixth Schedule in Assam',b2:'Polity — Special provisions Article 371C + CA'},
+    {b1:'Assam History — Freedom movement: Dhekiajuli, Patharughat, local leaders',b2:'Economy — Bad bank, eRupee, CBDC + CA'},
+    {b1:'Assam GK — Wildlife sanctuaries mapped to districts',b2:'Env — Ramsar sites + Green India Mission + CA'},
+    {b1:'NE India tribes + PVTGs: Maram, Riang, Birhor, Jarawa',b2:'S&T — Space missions: Aditya-L1, NISAR, Chandrayaan-3 + CA'},
+    {b1:'Assam GK — personalities + sobriquets: Geetikavi, Tyagbir, Lauha Manab',b2:'Economy — International bodies: WEF, SIPRI, G20 + CA'},
+    {b1:'Lucent IAS Assam — full chapter review + notes',b2:'CA May compilation finalise + Assam events column'},
+  ]},
+  {wk:5,ph:2,focus:'Env + S&T push — 19 questions combined. High ROI.',days:[
+    {b1:'Full mock + analysis',b2:'Env consolidation sprint + CA compile'},
+    {b1:'Env — GHG protocol, global warming potential, Basel/Rotterdam/Minamata conventions',b2:'Assam GK — Tea industry history + Jhumur dance culture + CA'},
+    {b1:'S&T — Physics: friction, mass vs weight, gravity, circular motion, evaporation',b2:'Polity — Judicial review, writs: certiorari, quo warranto, mandamus + CA'},
+    {b1:'Env — Cartagena Protocol, SDGs (17 goals), biodiversity conventions',b2:'Assam History — Partition impact on Assam + Assam Pradesh formation + CA'},
+    {b1:'S&T — Bioremediation, nanomaterials, ITER nuclear fusion, miRNA',b2:'Economy — Demography: birth rate, cohort fertility, birth deficit + CA'},
+    {b1:'Assam GK — tea garden community + Sadan ethnolinguistic group',b2:'Env — Forest Survey Report, beta diversity, niche + CA'},
+    {b1:'PYQ — Env + S&T questions 2022–2024 combined drill',b2:'Error log update + weak topics noted in notebook'},
+  ]},
+  {wk:6,ph:2,focus:'Economy deep dive — 18 questions in 2024!',days:[
+    {b1:'Full mock + analysis',b2:'Economy chapter revision + CA compile'},
+    {b1:'Economy — NITI Aayog, Finance Commission, fiscal tools: CRR, GST, subsidy',b2:'Assam GK — Orunodoi, Kanaklata Mahila Scheme details + CA'},
+    {b1:'Assam History — Post-independence Assam politics + ULFA Peace Deal 2023',b2:'Polity — Anti-defection law, censure vs no-confidence motion + CA'},
+    {b1:'Economy — GDP vs GNP, poverty indices, post-development theory',b2:'S&T — ITER, dark oxygen discovery, Bose-Einstein statistics + CA'},
+    {b1:'Assam GK — Jal Jeevan Mission, PMMSY, Sovereign Green Bonds',b2:'Env — SDGs (17 goals), Green India Mission + CA'},
+    {b1:'Economy — International trade: tariff, IMF, WTO, IMEC corridor',b2:'Assam Geography — oil fields (Digboi), plantation districts + CA'},
+    {b1:'PYQ Economy questions 2022–2024 full subject-wise drill',b2:'Error analysis + weak topics flagged in notebook'},
+  ]},
+  {wk:7,ph:2,focus:'Phase 2 consolidation. Mock scores should hit 140+.',days:[
+    {b1:'Full mock + analysis (aggressive review)',b2:'All-subjects weak-area targeted drilling'},
+    {b1:'Assam History — Assam Agitation, ULFA history, BTR Peace Deal 2023',b2:'Polity — Sixth Schedule, autonomous councils revision + CA'},
+    {b1:'Assam GK — Census data, SC/ST stats by district, sex ratio',b2:'Economy — NEP 2020, Women\'s Reservation Bill 2023 + CA'},
+    {b1:'India Geography — mountain passes, rivers, soil types, grasslands',b2:'National History — minimum PYQ topics only + CA'},
+    {b1:'Assam GK full revision — Lucent IAS key pages',b2:'Env + S&T rapid notes sprint + CA'},
+    {b1:'Economy revision — all key concepts + one-liners sheet',b2:'Polity — State special provisions revision + CA'},
+    {b1:'Phase 2 end self-assessment mock',b2:'CA May final compile + June tracking start'},
+  ]},
+  {wk:8,ph:3,focus:'Full syllabus rotation begins. Error log is your primary tool.',days:[
+    {b1:'Full mock + detailed analysis',b2:'CA June tracking start + error log opened'},
+    {b1:'Assam History rotation — high-frequency PYQ topics only',b2:'Economy key concepts rotation + CA'},
+    {b1:'Polity rotation — high-frequency PYQ topics',b2:'Env rotation sprint + CA'},
+    {b1:'Assam GK rotation — culture + schemes + awards',b2:'S&T rotation sprint + CA'},
+    {b1:'CA sweep — April to June 2025 events',b2:'Assam Geography rotation + CA'},
+    {b1:'Economy rotation + weak topic patch',b2:'National History + India Geo minimal + CA'},
+    {b1:'Error log review — all wrong answers from notebook',b2:'Weak topic drilling from error log'},
+  ]},
+  {wk:9,ph:3,focus:'Two mocks this week. Target 150+ consistently.',days:[
+    {b1:'Full mock 1 (week\'s primary mock)',b2:'Analysis + CA June compile'},
+    {b1:'Assam History + GK error log topics',b2:'Economy error log topics + CA'},
+    {b1:'Polity — remaining gaps from error log',b2:'Assam GK error log drilling + CA'},
+    {b1:'Full mock 2 (mid-week strict 2 hrs)',b2:'Immediate analysis only'},
+    {b1:'CA sweep — July to December 2025 events',b2:'Env + S&T weak areas + CA'},
+    {b1:'Assam Geography + NE tribes revision',b2:'Economy final concepts + CA'},
+    {b1:'Score trend analysis — am I on target?',b2:'CA June weekly compile'},
+  ]},
+  {wk:10,ph:3,focus:'Phase 3 final push. Aim for 155+ consistently.',days:[
+    {b1:'Full mock + analysis',b2:'CA compile + Assam GK highlights'},
+    {b1:'Full syllabus rotation — 30 min per weak subject',b2:'CA review + error log'},
+    {b1:'Assam History + GK combined revision',b2:'Economy + Polity quick notes + CA'},
+    {b1:'Full mock + analysis',b2:'Error log deep review'},
+    {b1:'Env + S&T revision sprint',b2:'CA January to June 2026 sweep start'},
+    {b1:'Assam GK one-liners: festivals, folk dances, awards, personalities',b2:'National History + India Geo fast revision + CA'},
+    {b1:'Phase 3 end assessment — score check and gap analysis',b2:'CA June final compile'},
+  ]},
+  {wk:11,ph:4,focus:'Phase 4: Peak mode. No new material after Jun 25.',days:[
+    {b1:'Full mock + analysis',b2:'CA final sweep (April–June 2025)'},
+    {b1:'Error log — Assam History + GK wrong answers',b2:'CA sweep (July–December 2025)'},
+    {b1:'Error log — Polity + Economy wrong answers',b2:'CA sweep (January–June 2026)'},
+    {b1:'Full mock (strict 2 hrs, phone off)',b2:'Immediate analysis only'},
+    {b1:'Assam GK final highlights + one-liners sheet',b2:'Economy one-liners + Polity key Articles'},
+    {b1:'Env + S&T rapid notes — no new material',b2:'CA Assam-specific final review'},
+    {b1:'Light revision only — no new material whatsoever',b2:'Scoring strategy review + exam sequence'},
+  ]},
+  {wk:12,ph:4,focus:'Final countdown. Confidence, not cramming.',days:[
+    {b1:'Final full mock + analysis',b2:'CA compilation final read-through'},
+    {b1:'Assam History + GK notes only — no new learning',b2:'Polity key Articles + CA'},
+    {b1:'Economy + Env + S&T one-liners only',b2:'CA Assam-centric events final review'},
+    {b1:'Error log final sweep — top 20 mistakes only',b2:'Absolutely no new content today'},
+    {b1:'Light Assam GK + CA one last read',b2:'Rest early. Sleep by 10pm.'},
+    {b1:'No studying after 6pm. Logistics: admit card, pen, ID, centre route.',b2:'Exam sequence: Polity → Assam Hist → Assam GK → CA → Economy → Env → S&T → Geo'},
+    {b1:'FINAL DAY — very light revision, notes only',b2:'Exam tomorrow Jul 5. Everything is ready.'},
+  ]},
+];
+
+// ============================================================
+// URGENCY & SUBJECT INFERENCE
+// ============================================================
+function inferUrgency(t){
+  const s=t.toLowerCase();
+  if(/current affairs|ca compile|ca sweep|ca final|ca june|ca may|ca week|\+ ca$|ca 30|ca weekly/.test(s))return 10;
+  if(/\bmock\b|pyq/.test(s))return 9;
+  if(/assam history|ahom|varman|buranji|yandabo|saraighat|lachit|patharughat|dhekiajuli|freedom movement|assam accord|ulfa/.test(s))return 9;
+  if(/assam gk|lucent ias|charaideo|satra|folk dance|orunodoi|mmua|jal jeevan|kanaklata|atmanirbhar|tribes.*assam|awards.*assam|assam gk/.test(s))return 9;
+  if(/error log/.test(s))return 8;
+  if(/polity|constitution|parliament|judiciary|election commission|fundamental rights|dpsp/.test(s))return 8;
+  if(/economy|gdp|niti|rbi|gini|rostow|lorenz|fiscal|monetary|budget|interim budget/.test(s))return 8;
+  if(/env|ecology|biodiversity|ramsar|convention|climate|sdg|green india/.test(s))return 7;
+  if(/s&t|physics|chemistry|biology|space|isro|nanomaterial|iter|mirna|bioremediation/.test(s))return 7;
+  if(/assam geography|brahmaputra.*trib|districts.*assam|borders.*assam|agroclimatic/.test(s))return 6;
+  if(/geography|mountain|soil.*type|grassland|india geo|world geo/.test(s))return 5;
+  if(/national history|ancient|medieval/.test(s))return 4;
+  return 6;
+}
+
+function inferSubject(t){
+  const s=t.toLowerCase();
+  if(/current affairs|ca compile|ca sweep|ca final|\+ ca/.test(s))return'Current Affairs';
+  if(/\bmock\b|pyq/.test(s))return'Mock / PYQ';
+  if(/assam history|ahom|varman|buranji|saraighat|lachit|yandabo/.test(s))return'Assam History';
+  if(/assam gk|lucent|folk dance|charaideo|satra|orunodoi|tribes.*assam|awards/.test(s))return'Assam GK';
+  if(/assam geography|tributaries|agroclimatic/.test(s))return'Assam Geography';
+  if(/polity|constitution|parliament|judiciary|election commission/.test(s))return'Polity';
+  if(/economy|gdp|rostow|lorenz|gini|niti|rbi|fiscal|monetary|budget/.test(s))return'Economy';
+  if(/env|ecology|biodiversity|ramsar|sdg|green india/.test(s))return'Env & Ecology';
+  if(/s&t|physics|chemistry|biology|space|isro|iter/.test(s))return'S & T';
+  if(/error log/.test(s))return'Error Log';
+  if(/geography|mountain|soil|grassland/.test(s))return'India / World Geo';
+  if(/national history|ancient|medieval/.test(s))return'National History';
+  return'General';
+}
+
+const SUBJ_COLOR={
+  'Current Affairs':'#0891B2','Mock / PYQ':'#1B3D2F','Assam History':'#E85A30',
+  'Assam GK':'#D94B80','Assam Geography':'#C47A2B','Polity':'#2D7A5A',
+  'Economy':'#7C3AED','Env & Ecology':'#059669','S & T':'#6D28D9',
+  'Error Log':'#B45309','India / World Geo':'#6B7280','National History':'#9CA3AF','General':'#888'
+};
+
+// ============================================================
+// GENERATE TASKS ARRAY
+// ============================================================
+const TASKS=[];
+SD.forEach(wk=>{
+  wk.days.forEach((day,di)=>{
+    const dIdx=(wk.wk-1)*7+di;
+    const d=new Date(APP_START);
+    d.setDate(d.getDate()+dIdx);
+    const iso=d.toISOString().split('T')[0];
+    [{text:day.b1,bl:1},{text:day.b2,bl:2}].forEach(({text,bl})=>{
+      const subj=inferSubject(text);
+      TASKS.push({
+        id:`w${wk.wk}d${di}b${bl}`,wk:wk.wk,di,bl,text,
+        urgency:inferUrgency(text),subject:subj,
+        color:SUBJ_COLOR[subj]||'#888',
+        originalDate:iso,phase:wk.ph
+      });
+    });
+  });
+});
+
+// ============================================================
+// STATE MANAGEMENT
+// ============================================================
+let ST={completed:[],rescheduled:{},lastAutoCheck:'',overflow:[]};
+
+function loadST(){
+  try{const s=localStorage.getItem(STORAGE_KEY);if(s)ST={...ST,...JSON.parse(s)};}catch(e){}
+}
+function saveST(){
+  try{localStorage.setItem(STORAGE_KEY,JSON.stringify(ST));}catch(e){}
+}
+
+// ============================================================
+// DATE UTILITIES
+// ============================================================
+function isoNow(){return new Date().toISOString().split('T')[0];}
+function addDays(iso,n){
+  const d=new Date(iso+'T00:00:00');d.setDate(d.getDate()+n);
+  return d.toISOString().split('T')[0];
+}
+function fmtDate(iso){
+  const d=new Date(iso+'T00:00:00');
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MNTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return`${DAYS[d.getDay()]} ${d.getDate()} ${MNTHS[d.getMonth()]}`;
+}
+function dayNum(){
+  const diff=Math.floor((Date.now()-APP_START)/86400000);
+  return Math.max(1,Math.min(84,diff+1));
+}
+function daysLeft(){
+  const e=new Date(EXAM_ISO+'T00:00:00');
+  return Math.max(0,Math.ceil((e-Date.now())/86400000));
+}
+
+// ============================================================
+// CORE TASK ACCESSORS
+// ============================================================
+function getTask(id){return TASKS.find(t=>t.id===id);}
+function getSchedDate(id){return ST.rescheduled[id]||getTask(id)?.originalDate;}
+function isCompleted(id){return ST.completed.includes(id);}
+
+function getTasksForDate(iso,pendingOnly=false){
+  return TASKS.filter(t=>{
+    if(getSchedDate(t.id)!==iso)return false;
+    if(pendingOnly&&isCompleted(t.id))return false;
+    return true;
+  });
+}
+
+function getAllTaskCountForDate(iso){
+  return TASKS.filter(t=>getSchedDate(t.id)===iso).length;
+}
+
+// ============================================================
+// RESHUFFLING ENGINE
+// ============================================================
+function cascadeTask(id,fromIso,depth=0){
+  if(depth>60){if(!ST.overflow.includes(id))ST.overflow.push(id);return;}
+  const nextIso=addDays(fromIso,1);
+  if(nextIso>CUTOFF_ISO){if(!ST.overflow.includes(id))ST.overflow.push(id);return;}
+
+  // Get total tasks on next day (completed + pending)
+  const totalOnNext=getAllTaskCountForDate(nextIso);
+
+  if(totalOnNext<2){
+    // Free slot — schedule here
+    ST.rescheduled[id]=nextIso;
+    return;
+  }
+
+  // Next day is full — find least urgent PENDING task to displace
+  const pendingOnNext=getTasksForDate(nextIso,true);
+
+  if(pendingOnNext.length===0){
+    // All tasks on next day completed, no room to make — push further
+    cascadeTask(id,nextIso,depth+1);
+    return;
+  }
+
+  // Find least urgent
+  const leastUrgent=pendingOnNext.reduce((min,t)=>
+    (getTask(t.id)?.urgency||5)<(getTask(min.id)?.urgency||5)?t:min
+  );
+
+  // Cascade leastUrgent further to make room
+  cascadeTask(leastUrgent.id,nextIso,depth+1);
+
+  // If leastUrgent successfully moved (not in same place anymore), schedule our task here
+  const luNewDate=ST.rescheduled[leastUrgent.id];
+  if(luNewDate&&luNewDate!==nextIso){
+    ST.rescheduled[id]=nextIso;
+  } else if(ST.overflow.includes(leastUrgent.id)){
+    // leastUrgent went to overflow, so the spot is technically free
+    ST.rescheduled[id]=nextIso;
+  } else {
+    // Something unexpected — try next day
+    cascadeTask(id,nextIso,depth+1);
+  }
+}
+
+function reshuffleTask(id){
+  const today=isoNow();
+  // Remove from overflow if it was there
+  ST.overflow=ST.overflow.filter(x=>x!==id);
+  cascadeTask(id,today);
+}
+
+function reshuffleTodayMissed(){
+  const today=isoNow();
+  const pending=getTasksForDate(today,true);
+  let count=0;
+  pending.forEach(t=>{
+    reshuffleTask(t.id);
+    count++;
+  });
+  saveST();
+  return count;
+}
+
+function autoCheckMissed(){
+  const today=isoNow();
+  if(ST.lastAutoCheck>=today)return 0;
+  let reshuffled=0;
+  const start=ST.lastAutoCheck?addDays(ST.lastAutoCheck,1):'2026-04-12';
+  let d=start;
+  while(d<today){
+    const pending=getTasksForDate(d,true);
+    pending.forEach(t=>{
+      if(!ST.rescheduled[t.id]&&!ST.overflow.includes(t.id)){
+        cascadeTask(t.id,d);
+        reshuffled++;
+      }
+    });
+    d=addDays(d,1);
+  }
+  ST.lastAutoCheck=today;
+  saveST();
+  return reshuffled;
+}
+
+function toggleComplete(id){
+  if(isCompleted(id)){
+    ST.completed=ST.completed.filter(x=>x!==id);
+  }else{
+    ST.completed.push(id);
+    ST.overflow=ST.overflow.filter(x=>x!==id);
+  }
+  saveST();
+  renderAll();
+}
+
+// ============================================================
+// URGENCY COLOR
+// ============================================================
+function urgencyColor(u){
+  if(u>=10)return'#0891B2';
+  if(u>=9)return'#E85A30';
+  if(u>=8)return'#D97706';
+  if(u>=7)return'#059669';
+  if(u>=6)return'#6B7280';
+  return'#9CA3AF';
+}
+
+// ============================================================
+// TASK CARD HTML
+// ============================================================
+function taskCardHTML(task,showFrom){
+  const done=isCompleted(task.id);
+  const isResched=!!ST.rescheduled[task.id]&&ST.rescheduled[task.id]!==task.originalDate;
+  const fromBadge=showFrom&&isResched?
+    `<div class="task-from">↩ carried from ${fmtDate(task.originalDate)}</div>`:
+    '';
+  return`<div class="task-card${done?' done':''}${isResched&&showFrom?' rescheduled':''}" id="tc_${task.id}">
+    ${fromBadge}
+    <div class="task-row">
+      <button class="chk${done?' checked':''}" onclick="toggleComplete('${task.id}')">${done?'✓':''}</button>
+      <div class="task-body">
+        <div class="task-subj" style="color:${task.color}">${task.subject}</div>
+        <div class="task-text">${task.text}</div>
+      </div>
+      <div class="urg-dot" title="Urgency ${task.urgency}" style="background:${urgencyColor(task.urgency)}"></div>
+    </div>
+  </div>`;
+}
+
+// ============================================================
+// RENDER TODAY
+// ============================================================
+function renderToday(){
+  const today=isoNow();
+  const dn=dayNum();
+  const ph=phaseInfo(dn);
+  const el=document.getElementById('tab-today');
+
+  if(today===EXAM_ISO){
+    el.innerHTML=`<div class="exam-banner">
+      <div class="exam-banner-title">EXAM DAY</div>
+      <div class="exam-banner-sub">APSC CCE Prelims 2026</div>
+      <div class="exam-seq">Polity → Assam History → Assam GK → CA → Economy → Env &amp; Ecology → S&amp;T → Geography</div>
+    </div>`;
+    return;
+  }
+
+  const allToday=getTasksForDate(today,false);
+  const pending=allToday.filter(t=>!isCompleted(t.id));
+  const done=allToday.filter(t=>isCompleted(t.id));
+
+  const sortedPending=[...pending].sort((a,b)=>{
+    const aR=!!ST.rescheduled[a.id]&&ST.rescheduled[a.id]!==a.originalDate;
+    const bR=!!ST.rescheduled[b.id]&&ST.rescheduled[b.id]!==b.originalDate;
+    if(aR!==bR)return aR?-1:1;
+    return b.urgency-a.urgency;
+  });
+
+  const pct=allToday.length?Math.round(done.length/allToday.length*100):0;
+
+  let html=`<div class="today-header">
+    <div class="today-date">${fmtDate(today)}</div>
+    <div class="today-meta">
+      <span class="pd-inline pd${ph.n}"></span>
+      Day ${dn} of 84 &nbsp;·&nbsp; Phase ${ph.n}: ${ph.name}
+    </div>
+    <div class="today-prog-row">
+      <div class="today-prog-track"><div class="today-prog-fill" style="width:${pct}%"></div></div>
+      <div class="today-prog-text">${done.length}/${allToday.length} done</div>
+    </div>
+  </div>`;
+
+  if(ST.overflow.length>0){
+    const ov=ST.overflow.filter(id=>!isCompleted(id));
+    if(ov.length>0)html+=`<div class="overflow-warn">⚠ ${ov.length} task(s) couldn't be rescheduled — too close to exam. Consider doing them today.</div>`;
+  }
+
+  if(allToday.length===0){
+    html+=`<div class="empty-day">No tasks scheduled for today. Open the Schedule tab to review your plan.</div>`;
+  }
+
+  if(sortedPending.length>0){
+    html+=`<div class="section-lbl">To do today</div>`;
+    sortedPending.forEach(t=>{ html+=taskCardHTML(t,true); });
+  }
+
+  if(done.length>0){
+    html+=`<div class="section-lbl">Completed</div>`;
+    done.forEach(t=>{ html+=taskCardHTML(t,false); });
+  }
+
+  if(sortedPending.length===0&&done.length>0){
+    html+=`<div class="all-done">
+      <div class="all-done-icon">✓</div>
+      <div class="all-done-title">All done for today!</div>
+      <div class="all-done-sub">Come back tomorrow or check tomorrow's plan in Schedule.</div>
+    </div>`;
+  }
+
+  if(sortedPending.length>0){
+    html+=`<button class="reshuffle-btn" onclick="handleReshuffle()">Reshuffle missed tasks to tomorrow →</button>`;
+  }
+
+  el.innerHTML=html;
+}
+
+// ============================================================
+// RESHUFFLE HANDLER
+// ============================================================
+function handleReshuffle(){
+  const count=reshuffleTodayMissed();
+  renderAll();
+  showToast(count>0?`${count} task(s) moved to tomorrow`:'No pending tasks to reshuffle');
+}
+
+// ============================================================
+// RENDER DASHBOARD
+// ============================================================
+function renderDashboard(){
+  const dn=dayNum(),dl=daysLeft(),ph=phaseInfo(dn);
+  const doneCount=ST.completed.length;
+  const totalCount=TASKS.length;
+  const pct=Math.round(doneCount/totalCount*100);
+  const GUIDANCE={
+    1:'Take 2 PYQ papers in the first 2 days. Lock History and Polity. Start Assam GK. CA habit begins today — no exceptions.',
+    2:'Assam GK is your daily anchor — 50 min minimum. Economy is now a major subject (18 Qs in 2024). One full mock every Sunday.',
+    3:'Full syllabus rotation. Two mocks per week. Error log is your most valuable tool. Target 155+ consistently.',
+    4:'No new material after Jun 25. Only revision and mocks. CA final sweep. Aim for 162+ in your last mock before exam day.'
+  };
+  const ALLOC=[
+    {m:50,n:'Assam (History + GK)',note:'~30 Qs — biggest score block'},
+    {m:20,n:'Current Affairs',note:'Non-negotiable every day'},
+    {m:20,n:'Polity',note:'Stable ~14 Qs'},
+    {m:15,n:'Economy',note:'18 Qs in 2024 — rising fast'},
+    {m:15,n:'Rotating (Env / S&T / Geo)',note:'Phase-dependent focus'},
+  ];
+  document.getElementById('tab-dashboard').innerHTML=`
+    <div class="metric-grid">
+      <div class="metric"><div class="mlbl">Days left</div><div class="mval">${dl}</div></div>
+      <div class="metric"><div class="mlbl">Today</div><div class="mval">Day ${dn}</div></div>
+      <div class="metric"><div class="mlbl">Tasks done</div><div class="mval">${doneCount}</div></div>
+      <div class="metric"><div class="mlbl">Progress</div><div class="mval" style="font-size:16px">${pct}%</div></div>
+    </div>
+    <div class="guidance-card">
+      <div class="g-title">Phase ${ph.n} — ${ph.name}</div>${GUIDANCE[ph.n]}
+    </div>
+    <div class="card">
+      <div class="card-title">Daily 2-hour allocation</div>
+      ${ALLOC.map(a=>`<div class="alloc-row">
+        <div class="alloc-time">${a.m}m</div>
+        <div class="alloc-info"><div class="alloc-name">${a.n}</div><div class="alloc-note">${a.note}</div></div>
+        <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:${Math.round(a.m/120*100)}%"></div></div>
+      </div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-title">Key PYQ insights</div>
+      ${[
+        {f:'Critical',c:'fc',t:'National History: 10→5→1 question. Your biggest strength is nearly irrelevant now.'},
+        {f:'Critical',c:'fc',t:'Economy: 6→11→18 questions. 2024 asked Rostow, Lorenz, Gini. Treat as major subject.'},
+        {f:'Watch',c:'fw',t:'Assam History + GK + Geography = ~30 Qs. This single block decides your result.'},
+        {f:'Opportunity',c:'fo',t:'S&T Class 10 physics/chemistry appears every year. Free marks with 2 days prep.'},
+      ].map(i=>`<div class="insight-row"><span class="iflag ${i.c}">${i.f}</span><span class="itext">${i.t}</span></div>`).join('')}
+    </div>`;
+}
+
+// ============================================================
+// RENDER SCHEDULE
+// ============================================================
+let schedWk=1;
+
+function renderSchedule(wkNum){
+  schedWk=wkNum;
+  const today=isoNow();
+
+  const weekBtns=SD.map(wk=>{
+    const wkTasks=TASKS.filter(t=>t.wk===wk.wk);
+    const wkDone=wkTasks.filter(t=>isCompleted(t.id)).length;
+    const active=wk.wk===wkNum;
+    return`<button class="wk-btn${active?' active':''}" onclick="renderSchedule(${wk.wk})">Wk ${wk.wk}${wkDone>0?`<span class="wk-done">${wkDone}</span>`:''}</button>`;
+  }).join('');
+
+  const wk=SD.find(w=>w.wk===wkNum);
+
+  const dayRows=wk.days.map((day,di)=>{
+    const dIdx=(wk.wk-1)*7+di;
+    const d=new Date(APP_START);d.setDate(d.getDate()+dIdx);
+    const iso=d.toISOString().split('T')[0];
+    const isPast=iso<today;
+    const isToday=iso===today;
+
+    const b1=TASKS.find(t=>t.wk===wkNum&&t.di===di&&t.bl===1);
+    const b2=TASKS.find(t=>t.wk===wkNum&&t.di===di&&t.bl===2);
+
+    const taskRow=(t)=>{
+      if(!t)return'';
+      const done=isCompleted(t.id);
+      const resched=ST.rescheduled[t.id];
+      const movedAway=resched&&resched!==iso;
+      let badge='';
+      if(movedAway)badge=`<span class="badge badge-moved">→ ${fmtDate(resched)}</span>`;
+
+      // Check if this task is incoming (originally from another day, now here)
+      const isIncoming=t.originalDate!==iso&&getSchedDate(t.id)===iso;
+      if(isIncoming)badge=`<span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span>`;
+
+      return`<div class="sched-task${done?' done-task':''}${movedAway?' moved-away':''}${isIncoming?' incoming':''}">
+        <span class="sched-dot" style="background:${t.color}"></span>
+        <span class="sched-txt">${t.text}</span>
+        ${badge}
+      </div>`;
+    };
+
+    // Find tasks from OTHER days that are now scheduled here
+    const incoming=TASKS.filter(t=>{
+      if(t.wk===wkNum&&t.di===di)return false;// original tasks handled above
+      return getSchedDate(t.id)===iso&&!isCompleted(t.id);
+    });
+
+    return`<div class="sched-day${isToday?' is-today':''}${isPast&&!isToday?' is-past':''}">
+      <div class="sched-day-lbl${isToday?' is-today-lbl':''}">${fmtDate(iso)}${isToday?' · Today':''}</div>
+      ${taskRow(b1)}
+      ${taskRow(b2)}
+      ${incoming.map(t=>`<div class="sched-task incoming">
+        <span class="sched-dot" style="background:${t.color}"></span>
+        <span class="sched-txt">${t.text}</span>
+        <span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span>
+      </div>`).join('')}
+    </div>`;
+  }).join('');
+
+  document.getElementById('tab-schedule').innerHTML=`
+    <div class="week-tabs">${weekBtns}</div>
+    <div class="card">
+      <div class="week-hdr">
+        <div class="week-lbl">Week ${wk.wk} — ${wk.focus}</div>
+        <span class="pbadge ph${wk.ph}">Phase ${wk.ph}</span>
+      </div>
+      ${dayRows}
+    </div>`;
+}
+
+// ============================================================
+// RENDER SUBJECTS
+// ============================================================
+function renderSubjects(){
+  const SUBJS=[
+    {n:'Current Affairs',qs:15,p:'critical',note:'Daily non-negotiable. Assam-centric column.'},
+    {n:'Polity',qs:14,p:'maintain',note:'Stable ~14 Qs. Most reliable scoring block.'},
+    {n:'Assam History',qs:13,p:'critical',note:'Ahom, epigraphs, Freedom movement.'},
+    {n:'Economy',qs:12,p:'high',note:'6→11→18 Qs. Rostow, Lorenz, Gini.'},
+    {n:'Assam GK',qs:10,p:'critical',note:'Tribes, culture, festivals, schemes, awards.'},
+    {n:'Env & Ecology',qs:10,p:'high',note:'Protected areas NE, conventions, SDGs.'},
+    {n:'S&T',qs:9,p:'high',note:'Class 10 physics/chemistry = free marks.'},
+    {n:'Assam Geography',qs:7,p:'high',note:'Rivers, districts, borders, oil fields.'},
+    {n:'India/World Geo',qs:5,p:'maintain',note:'Declining. Quick revision only.'},
+    {n:'National History',qs:5,p:'maintain',note:'10→5→1 Qs. Do NOT over-invest.'},
+  ];
+  const TRENDS=[
+    ['Polity',14,14,13,'→'],['Current Affairs',20,15,9,'↓'],['Assam History',14,10,14,'→'],
+    ['Economy',6,11,18,'↑↑'],['Assam GK',6,14,10,'↑'],['Env & Ecology',10,8,11,'→'],
+    ['S&T',4,13,10,'↑'],['Assam Geography',6,7,8,'↑'],['National History',10,5,1,'↓↓'],
+    ['India/World Geo',8,2,5,'↓'],
+  ];
+  const pCls={critical:'p-crit',high:'p-high',maintain:'p-maint'};
+  const barCls={critical:'bar-c',high:'bar-h',maintain:'bar-m'};
+  document.getElementById('tab-subjects').innerHTML=`
+    <div class="card">
+      <div class="card-title">Avg questions per subject (2022–2024)</div>
+      ${SUBJS.map(s=>`<div class="subject-row">
+        <div class="subj-hdr">
+          <div class="subj-name">${s.n}<span class="p-pill ${pCls[s.p]}">${s.p}</span></div>
+          <div class="subj-qs">~${s.qs}</div>
+        </div>
+        <div class="subj-bar-track"><div class="subj-bar-fill ${barCls[s.p]}" style="width:${s.qs}%"></div></div>
+        <div class="subj-note">${s.note}</div>
+      </div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-title">Year-on-year question count</div>
+      <div style="overflow-x:auto">
+        <table class="trend-table">
+          <thead><tr><th style="min-width:110px">Subject</th><th>2022</th><th>2023</th><th>2024</th><th>Trend</th></tr></thead>
+          <tbody>${TRENDS.map(r=>{
+            const tc=r[4].includes('↑')?'tu':r[4].includes('↓')?'td':'tn';
+            return`<tr><td>${r[0]}</td><td style="text-align:center">${r[1]}</td><td style="text-align:center">${r[2]}</td><td style="text-align:center">${r[3]}</td><td style="text-align:center" class="${tc}">${r[4]}</td></tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+    </div>`;
+}
+
+// ============================================================
+// RENDER SCORE
+// ============================================================
+function renderScore(){
+  const TARGETS=[
+    {s:'Assam (Hist + GK + Geo)',qs:30,t:24,note:'80% needed here'},
+    {s:'Polity',qs:14,t:12,note:'85%+ achievable'},
+    {s:'Current Affairs',qs:15,t:11,note:'75% with daily CA habit'},
+    {s:'Economy',qs:12,t:9,note:'75% if concepts locked'},
+    {s:'Env + S&T',qs:19,t:14,note:'75% after focused prep'},
+    {s:'Geography (all)',qs:12,t:8,note:'67% is sufficient'},
+  ];
+  document.getElementById('tab-score').innerHTML=`
+    <div class="card">
+      <div class="card-title">Score calculator — 100 Qs · 200 marks</div>
+      <div class="slider-row">
+        <span class="slider-lbl">Attempted</span>
+        <input type="range" min="60" max="100" step="1" value="90" id="sl-att" oninput="calcScore()">
+        <span id="out-att" class="slider-val">90</span>
+      </div>
+      <div class="slider-row">
+        <span class="slider-lbl">Accuracy %</span>
+        <input type="range" min="50" max="100" step="1" value="85" id="sl-acc" oninput="calcScore()">
+        <span id="out-acc" class="slider-val">85%</span>
+      </div>
+      <div class="score-metrics">
+        <div class="score-metric"><div class="smlbl">Correct</div><div id="sc-c" class="smval" style="color:var(--forest)">77</div></div>
+        <div class="score-metric"><div class="smlbl">Wrong</div><div id="sc-w" class="smval" style="color:var(--red)">13</div></div>
+        <div class="score-metric"><div class="smlbl">Score</div><div id="sc-s" class="smval">147.5</div></div>
+      </div>
+      <div id="sc-adv" class="score-advice adv-w"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Subject-wise targets → 165+</div>
+      ${TARGETS.map(r=>`<div class="target-row">
+        <div><div class="t-subj">${r.s}</div><div class="t-note">${r.note}</div></div>
+        <div class="t-score"><div class="t-frac">${r.t}/${r.qs}</div><div class="t-pct">${Math.round(r.t/r.qs*100)}%</div></div>
+      </div>`).join('')}
+    </div>`;
+  calcScore();
+}
+
+function calcScore(){
+  const att=parseInt(document.getElementById('sl-att')?.value||90);
+  const acc=parseInt(document.getElementById('sl-acc')?.value||85);
+  const correct=Math.round(att*acc/100);
+  const wrong=att-correct;
+  const score=Math.round((correct*2-wrong*0.5)*10)/10;
+  const c=document.getElementById('sc-c'),w=document.getElementById('sc-w'),s=document.getElementById('sc-s');
+  const adv=document.getElementById('sc-adv');
+  if(c)c.textContent=correct;
+  if(w)w.textContent=wrong;
+  if(s)s.textContent=score;
+  const oa=document.getElementById('out-att'),oc=document.getElementById('out-acc');
+  if(oa)oa.textContent=att;
+  if(oc)oc.textContent=acc+'%';
+  if(adv){
+    if(score>=162){adv.className='score-advice adv-g';adv.innerHTML=`<span class="adv-strong">Strong zone.</span> ${score} marks puts you above the likely cutoff.`;}
+    else if(score>=145){adv.className='score-advice adv-w';adv.innerHTML=`<span class="adv-strong">Borderline.</span> ${score} marks is risky. Push accuracy above 85%.`;}
+    else{adv.className='score-advice adv-b';adv.innerHTML=`<span class="adv-strong">Below target.</span> ${score} marks. Focus on accuracy — one wrong costs 0.5 marks net.`;}
+  }
+}
+
+// ============================================================
+// PHASE INFO
+// ============================================================
+function phaseInfo(d){
+  if(d<=14)return{n:1,name:'Calibrate',cls:'ph1'};
+  if(d<=49)return{n:2,name:'Build',cls:'ph2'};
+  if(d<=70)return{n:3,name:'Integrate',cls:'ph3'};
+  return{n:4,name:'Peak',cls:'ph4'};
+}
+
+// ============================================================
+// HEADER
+// ============================================================
+function renderHeader(){
+  const dn=dayNum(),dl=daysLeft(),ph=phaseInfo(dn);
+  document.getElementById('phase-badge').textContent=`Phase ${ph.n}: ${ph.name}`;
+  document.getElementById('phase-badge').className=`pbadge ${ph.cls}`;
+  document.getElementById('day-counter').textContent=`Day ${dn} · ${dl} left`;
+  document.getElementById('prog-fill').style.width=`${Math.round(dn/84*100)}%`;
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.style.opacity='1';
+  clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';},2500);
+}
+
+// ============================================================
+// RENDER ALL
+// ============================================================
+let activeTab='today';
+
+function renderAll(){
+  renderHeader();
+  if(activeTab==='today')renderToday();
+  else if(activeTab==='dashboard')renderDashboard();
+  else if(activeTab==='schedule')renderSchedule(schedWk);
+  else if(activeTab==='subjects')renderSubjects();
+  else if(activeTab==='score')renderScore();
+}
+
+// ============================================================
+// TAB NAVIGATION
+// ============================================================
+document.querySelectorAll('.tb').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tc').forEach(c=>c.classList.remove('active'));
+    btn.classList.add('active');
+    activeTab=btn.dataset.tab;
+    document.getElementById('tab-'+activeTab).classList.add('active');
+    renderAll();
+  });
+});
+
+// ============================================================
+// INIT
+// ============================================================
+loadST();
+const autoReshuffled=autoCheckMissed();
+renderHeader();
+renderToday();
+renderDashboard();
+renderSchedule(1);
+renderSubjects();
+renderScore();
+
+if(autoReshuffled>0){
+  setTimeout(()=>showToast(`${autoReshuffled} missed task(s) auto-rescheduled`),600);
+}
+
+// Service worker
+if('serviceWorker'in navigator){
+  navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+</script>
+</body>
+</html>
