@@ -11,26 +11,26 @@
 <link rel="manifest" href="manifest.json">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--forest:#1B3D2F;--forest-mid:#2D5E47;--forest-light:#E8F2ED;--forest-pale:#F2F8F4;--amber:#C47A2B;--amber-light:#FDF0E0;--amber-pale:#FEF8F0;--red:#A32D2D;--red-light:#FCEBEB;--purple:#534AB7;--purple-light:#EEEDFE;--blue:#185FA5;--blue-light:#E6F1FB;--cream:#F7F5F0;--white:#FEFEFE;--ink:#181818;--ink-mid:#444;--ink-light:#777;--ink-pale:#AAA;--border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);--r:12px;--rs:8px;--safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom)}
+:root{--forest:#1B3D2F;--forest-mid:#2D5E47;--forest-light:#E8F2ED;--forest-pale:#F2F8F4;--amber:#C47A2B;--amber-light:#FDF0E0;--amber-pale:#FEF8F0;--red:#A32D2D;--red-light:#FCEBEB;--purple:#534AB7;--purple-light:#EEEDFE;--blue:#185FA5;--blue-light:#E6F1FB;--teal:#0F6E56;--teal-light:#E1F5EE;--cream:#F7F5F0;--white:#FEFEFE;--ink:#181818;--ink-mid:#444;--ink-light:#777;--ink-pale:#AAA;--border:rgba(0,0,0,0.08);--border-strong:rgba(0,0,0,0.14);--r:12px;--rs:8px;--safe-top:env(safe-area-inset-top);--safe-bottom:env(safe-area-inset-bottom)}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--cream);color:var(--ink);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.5;overflow-x:hidden}
-.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--cream)}
+.app{max-width:480px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
 .hdr{background:var(--forest);color:white;padding:calc(var(--safe-top)+14px) 18px 14px;position:sticky;top:0;z-index:100}
 .hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .logo{width:30px;height:30px;background:var(--amber);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;color:white;flex-shrink:0}
 .hdr-title{font-size:15px;font-weight:600}
 .hdr-sub{font-size:11px;opacity:.6;margin-top:1px}
-.hdr-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.pbadge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px;background:rgba(255,255,255,.15)}
-.pbadge.ph1{background:rgba(196,122,43,.35)}.pbadge.ph2{background:rgba(255,255,255,.15)}.pbadge.ph3{background:rgba(196,122,43,.35)}.pbadge.ph4{background:rgba(163,45,45,.4)}
+.hdr-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.pbadge{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:20px}
+.ph1{background:rgba(196,122,43,.35)}.ph2{background:rgba(255,255,255,.15)}.ph3{background:rgba(196,122,43,.35)}.ph4{background:rgba(163,45,45,.4)}.ph-sun{background:rgba(83,74,183,.4)}
 .dctr{font-family:'Space Mono',monospace;font-size:11px;opacity:.6}
 .prog-track{height:3px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}
-.prog-fill{height:100%;background:var(--amber);border-radius:2px;transition:width .5s ease}
+.prog-fill{height:100%;background:var(--amber);border-radius:2px;transition:width .5s}
 .tabs{display:flex;background:var(--white);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;position:sticky;top:calc(var(--safe-top)+88px);z-index:99}
 .tabs::-webkit-scrollbar{display:none}
 .tb{flex-shrink:0;padding:11px 13px;font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;color:var(--ink-light);background:none;border:none;border-bottom:2.5px solid transparent;cursor:pointer;white-space:nowrap;transition:all .15s}
 .tb.active{color:var(--forest);border-bottom-color:var(--forest)}
-.main{flex:1;padding:14px;padding-bottom:calc(20px + var(--safe-bottom))}
+.main{flex:1;padding:14px;padding-bottom:calc(20px + var(--safe-bottom));background:var(--cream)}
 .tc{display:none}.tc.active{display:block}
 .card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 .card-title{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-light);margin-bottom:12px}
@@ -40,12 +40,13 @@ html,body{height:100%;background:var(--cream);color:var(--ink);font-family:'Outf
 .mval{font-family:'Space Mono',monospace;font-size:20px;font-weight:700;color:var(--forest)}
 .guidance-card{border-left:4px solid var(--forest);background:var(--forest-pale);border-radius:0 var(--rs) var(--rs) 0;padding:13px 15px;margin-bottom:12px;font-size:13px;line-height:1.65;color:var(--ink-mid)}
 .g-title{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--forest);margin-bottom:5px}
+.sunday-banner{background:var(--purple-light);border:1px solid rgba(83,74,183,.2);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.sunday-title{font-size:14px;font-weight:600;color:var(--purple);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.sunday-rule{font-size:12px;color:var(--purple);opacity:.8;line-height:1.5}
 .alloc-row{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--border)}
 .alloc-row:last-child{border-bottom:none}
 .alloc-time{width:36px;height:36px;border-radius:var(--rs);background:var(--forest-pale);display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;color:var(--forest);flex-shrink:0}
-.alloc-info{flex:1}
-.alloc-name{font-size:13px;font-weight:500}
-.alloc-note{font-size:11px;color:var(--ink-light)}
+.alloc-info{flex:1}.alloc-name{font-size:13px;font-weight:500}.alloc-note{font-size:11px;color:var(--ink-light)}
 .alloc-bar-wrap{width:40px;height:4px;background:var(--border);border-radius:2px;overflow:hidden;flex-shrink:0}
 .alloc-bar{height:100%;background:var(--forest);border-radius:2px}
 .insight-row{display:flex;gap:9px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start}
@@ -55,33 +56,36 @@ html,body{height:100%;background:var(--cream);color:var(--ink);font-family:'Outf
 .itext{font-size:13px;color:var(--ink-mid);line-height:1.5}
 .today-header{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:16px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
 .today-date{font-family:'Space Mono',monospace;font-size:16px;font-weight:700;color:var(--forest);margin-bottom:3px}
-.today-meta{font-size:12px;color:var(--ink-light);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.today-meta{font-size:12px;color:var(--ink-light);margin-bottom:12px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .pd-inline{width:7px;height:7px;border-radius:50%;display:inline-block;flex-shrink:0}
-.pd1{background:var(--forest)}.pd2{background:#534AB7}.pd3{background:var(--amber)}.pd4{background:var(--red)}
+.pd1{background:var(--forest)}.pd2{background:#534AB7}.pd3{background:var(--amber)}.pd4{background:var(--red)}.pd-sun{background:var(--purple)}
 .today-prog-row{display:flex;align-items:center;gap:10px}
 .today-prog-track{flex:1;height:5px;background:var(--cream);border-radius:3px;overflow:hidden}
 .today-prog-fill{height:100%;background:var(--forest);border-radius:3px;transition:width .4s}
 .today-prog-text{font-size:12px;font-weight:600;color:var(--forest);white-space:nowrap}
+.ca-banner{background:var(--teal-light);border:1px solid rgba(15,110,86,.2);border-radius:var(--rs);padding:10px 13px;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.ca-icon{width:30px;height:30px;background:var(--teal);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;color:white;flex-shrink:0}
+.ca-text{font-size:13px;color:var(--teal);font-weight:500;line-height:1.4}
+.ca-sub{font-size:11px;color:var(--teal);opacity:.75}
 .section-lbl{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-pale);margin:16px 0 8px 0}
 .task-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:opacity .2s}
-.task-card.done{opacity:.5}
+.task-card.done{opacity:.45}
 .task-card.rescheduled{border-left:3px solid var(--amber)}
+.task-card.sunday-task{border-left:3px solid var(--purple)}
 .task-from{font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.04em;text-transform:uppercase;margin-bottom:8px}
 .task-row{display:flex;align-items:flex-start;gap:12px}
 .chk{width:24px;height:24px;border-radius:6px;border:2px solid var(--border-strong);background:transparent;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--forest);font-weight:700;transition:all .15s;-webkit-appearance:none;margin-top:1px}
 .chk.checked{background:var(--forest-light);border-color:var(--forest)}
-.task-body{flex:1}
-.task-subj{font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:3px}
+.task-body{flex:1}.task-subj{font-size:11px;font-weight:700;letter-spacing:.04em;margin-bottom:3px}
 .task-text{font-size:14px;color:var(--ink);line-height:1.45}
 .urg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;margin-top:6px}
 .reshuffle-btn{width:100%;padding:14px;background:var(--forest);color:white;border:none;border-radius:var(--r);font-family:'Outfit',sans-serif;font-size:14px;font-weight:600;cursor:pointer;margin-top:16px;transition:opacity .15s}
 .reshuffle-btn:active{opacity:.85}
-.all-done{background:var(--forest-pale);border:1px solid var(--forest-light);border-radius:var(--r);padding:24px 20px;text-align:center;color:var(--forest);margin-top:8px}
+.all-done{background:var(--forest-pale);border:1px solid var(--forest-light);border-radius:var(--r);padding:24px 20px;text-align:center;margin-top:8px}
 .all-done-icon{font-size:26px;margin-bottom:6px}
-.all-done-title{font-size:16px;font-weight:600;margin-bottom:4px}
+.all-done-title{font-size:16px;font-weight:600;color:var(--forest);margin-bottom:4px}
 .all-done-fw{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);margin-bottom:8px}
 .all-done-msg{font-size:13px;color:var(--ink-mid);line-height:1.6}
-.empty-day{background:var(--cream);border-radius:var(--r);padding:20px;text-align:center;color:var(--ink-light);font-size:14px}
 .overflow-warn{background:var(--red-light);border-radius:var(--rs);padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--red);line-height:1.5}
 .exam-banner{background:var(--forest);color:white;border-radius:var(--r);padding:28px 20px;text-align:center;margin-bottom:16px}
 .exam-banner-title{font-family:'Space Mono',monospace;font-size:22px;font-weight:700;margin-bottom:4px}
@@ -96,27 +100,30 @@ html,body{height:100%;background:var(--cream);color:var(--ink);font-family:'Outf
 .sched-day{padding:10px 0;border-bottom:1px solid var(--border)}
 .sched-day:last-child{border-bottom:none}
 .sched-day.is-today{background:var(--forest-pale);margin:0 -14px;padding:10px 14px;border-radius:var(--rs)}
-.sched-day.is-past{opacity:.55}
-.sched-day-lbl{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light);margin-bottom:7px}
+.sched-day.is-past{opacity:.5}
+.sched-day.is-sunday{background:var(--purple-light);margin:0 -14px;padding:10px 14px;border-radius:var(--rs)}
+.sched-day-lbl{font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light);margin-bottom:7px;display:flex;align-items:center;gap:6px}
 .sched-day-lbl.is-today-lbl{color:var(--forest)}
+.sched-day-lbl.sun-lbl{color:var(--purple)}
+.sun-chip{font-size:9px;background:var(--purple-light);color:var(--purple);border:1px solid rgba(83,74,183,.2);padding:1px 6px;border-radius:10px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
 .sched-task{display:flex;align-items:flex-start;gap:8px;margin-bottom:5px;font-size:13px;color:var(--ink-mid)}
 .sched-task:last-child{margin-bottom:0}
-.sched-task.done-task{opacity:.45;text-decoration:line-through}
-.sched-task.moved-away{opacity:.4;font-style:italic}
+.sched-task.done-task{opacity:.4;text-decoration:line-through}
+.sched-task.moved-away{opacity:.35;font-style:italic}
 .sched-task.incoming{color:var(--amber);font-style:italic}
 .sched-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;margin-top:5px}
 .sched-txt{flex:1;line-height:1.4}
-.badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.badge{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px;white-space:nowrap;flex-shrink:0}
 .badge-moved{background:var(--red-light);color:var(--red)}.badge-incoming{background:var(--amber-light);color:#854F0B}
-.subject-row{margin-bottom:13px}
-.subj-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
-.subj-name{font-size:14px;font-weight:500;display:flex;align-items:center;gap:7px}
 .p-pill{font-size:10px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 6px;border-radius:4px}
 .p-crit{background:var(--red-light);color:var(--red)}.p-high{background:var(--amber-light);color:#854F0B}.p-maint{background:var(--forest-light);color:var(--forest)}
-.subj-qs{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--forest)}
 .subj-bar-track{height:7px;background:var(--cream);border-radius:4px;overflow:hidden;margin-bottom:3px}
 .subj-bar-fill{height:100%;border-radius:4px}
 .bar-c{background:#E24B4A}.bar-h{background:var(--amber)}.bar-m{background:var(--forest-mid)}
+.subject-row{margin-bottom:13px}
+.subj-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.subj-name{font-size:14px;font-weight:500;display:flex;align-items:center;gap:7px}
+.subj-qs{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--forest)}
 .subj-note{font-size:12px;color:var(--ink-light)}
 .trend-table{width:100%;border-collapse:collapse;font-size:12px}
 .trend-table th{text-align:left;padding:5px 4px;font-weight:700;font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-light);border-bottom:1px solid var(--border-strong)}
@@ -143,11 +150,10 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .t-score{text-align:right;flex-shrink:0;padding-left:10px}
 .t-frac{font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--forest)}
 .t-pct{font-size:11px;color:var(--ink-light)}
-.fw-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+.fw-card{background:var(--white);border-radius:var(--r);border:1px solid var(--border);padding:14px;margin-bottom:10px}
 .fw-header{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.fw-icon{width:32px;height:32px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;font-weight:700;font-family:'Space Mono',monospace}
-.fw-name{font-size:14px;font-weight:600}
-.fw-origin{font-size:11px;color:var(--ink-light)}
+.fw-icon{width:32px;height:32px;border-radius:var(--rs);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;font-weight:700;font-family:'Space Mono',monospace}
+.fw-name{font-size:14px;font-weight:600}.fw-origin{font-size:11px;color:var(--ink-light)}
 .fw-insight{font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:8px}
 .fw-apsc{font-size:12px;line-height:1.55;padding:10px 12px;border-radius:var(--rs);border-left:3px solid}
 .vorp-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
@@ -169,8 +175,9 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 .ev-result{background:var(--cream);border-radius:var(--rs);padding:16px;text-align:center;margin-bottom:12px}
 .ev-verdict{font-size:18px;font-weight:700;margin-bottom:4px}
 .ev-sub{font-size:13px;color:var(--ink-light)}
-.ev-formula{font-family:'Space Mono',monospace;font-size:12px;color:var(--ink-light);text-align:center;margin-top:8px;line-height:1.6}
-#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--forest);color:white;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none}
+.distractor-chip{display:inline-block;font-size:11px;font-weight:600;padding:3px 8px;border-radius:20px;margin:3px 3px 0 0;cursor:pointer;background:var(--cream);color:var(--ink-mid);border:1px solid var(--border-strong)}
+.distractor-chip.active{background:var(--forest);color:white;border-color:var(--forest)}
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:var(--forest);color:white;padding:10px 18px;border-radius:20px;font-size:13px;font-weight:500;z-index:9999;white-space:nowrap;opacity:0;transition:opacity .3s;pointer-events:none;max-width:90vw;text-align:center}
 </style>
 </head>
 <body>
@@ -178,11 +185,11 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
   <header class="hdr">
     <div class="hdr-top">
       <div class="logo">A</div>
-      <div><div class="hdr-title">APSC CCE 2026</div><div class="hdr-sub">Dynamic Study Planner</div></div>
+      <div><div class="hdr-title">APSC CCE 2026</div><div class="hdr-sub">Dynamic Study Planner · Apr 17 → Jul 5</div></div>
     </div>
     <div class="hdr-meta">
-      <span id="phase-badge" class="pbadge ph1">Phase 1: Calibrate</span>
-      <span id="day-counter" class="dctr">Day 1 · 84 left</span>
+      <span id="phase-badge" class="pbadge ph1">Phase 1</span>
+      <span id="day-counter" class="dctr">Day 1 · 80 left</span>
     </div>
     <div class="prog-track"><div id="prog-fill" class="prog-fill" style="width:1%"></div></div>
   </header>
@@ -206,390 +213,408 @@ input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;heigh
 <div id="toast"></div>
 
 <script>
-// ============================================================
+// ─────────────────────────────────────────────
 // CONSTANTS
-// ============================================================
+// ─────────────────────────────────────────────
+const TOTAL_DAYS = 80;
+const STORAGE_KEY = 'apsc_v7';
 
-const EXAM_Y=2026,EXAM_M=6,EXAM_D=5;
-const CUTOFF_Y=2026,CUTOFF_M=6,CUTOFF_D=2;
-const STORAGE_KEY='apsc_v6';
+// ─────────────────────────────────────────────
+// DATE UTILITIES (all local, no UTC conversion)
+// ─────────────────────────────────────────────
+function localISO(d) {
+  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+}
+function isoToLocal(iso) {
+  const p = iso.split('-');
+  return new Date(+p[0], +p[1]-1, +p[2]);
+}
+function isoNow() { return localISO(new Date()); }
+function addDays(iso, n) {
+  const d = isoToLocal(iso);
+  d.setDate(d.getDate() + n);
+  return localISO(d);
+}
+function fmtDate(iso) {
+  const d = isoToLocal(iso);
+  const DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const M = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return `${DAYS[d.getDay()]} ${d.getDate()} ${M[d.getMonth()]}`;
+}
+function isSunday(iso) {
+  return isoToLocal(iso).getDay() === 0;
+}
+function dayNum() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const start = new Date(2026,3,17);
+  const diff = Math.floor((today - start) / 86400000);
+  return Math.max(1, Math.min(TOTAL_DAYS, diff + 1));
+}
+function daysLeft() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const exam = new Date(2026,6,5);
+  return Math.max(0, Math.ceil((exam - today) / 86400000));
+}
+function phaseInfo(d) {
+  if (d <= 14) return {n:1, name:'Calibrate', cls:'ph1'};
+  if (d <= 49) return {n:2, name:'Build', cls:'ph2'};
+  if (d <= 63) return {n:3, name:'Integrate', cls:'ph3'};
+  return {n:4, name:'Peak', cls:'ph4'};
+}
 
-// ============================================================
-// SCHEDULE DATA
-// ============================================================
-const SD=[
-  {wk:1,ph:1,focus:'Today is Day 1. Two PYQ mocks this week. Map gaps. Lock History + CA habit from today.',days:[
-    {b1:'PYQ 2024 full mock (2 hrs strict — Day 1 starts now)',b2:'Mock analysis — mark every subject-wise wrong answer'},
-    {b1:'PYQ 2023 — extract and solve all Assam questions only',b2:'PYQ 2022 full mock + gap analysis + CA habit starts'},
-    {b1:'Assam History — Varman dynasty + Kamarupa kingdom',b2:'Polity — Constitution basics + CA 30 min'},
-    {b1:'Assam History — Ahom kingdom (early period)',b2:'Polity — Fundamental Rights + CA 30 min'},
-    {b1:'Assam History — Ahom peak: Saraighat, Lachit Borphukan',b2:'Polity — DPSP + Fundamental Duties + CA 30 min'},
-    {b1:'Assam History — British entry + Yandabo Treaty 1826',b2:'Economy basics: GDP, GNP, fiscal deficit + CA 30 min'},
-    {b1:'Assam GK — Tribes: Bodo, Mising, Karbi, Tiwa overview',b2:'S&T — Physics: friction, gravity, circular motion + CA'},
+// ─────────────────────────────────────────────
+// SCHEDULE DATA — 80 days, Apr 17 → Jul 5
+// sunday:true = revision day, no reshuffling
+// ─────────────────────────────────────────────
+const SD = [
+  {wk:1, ph:1, focus:'Diagnostic phase. Two PYQ mocks to map your gaps. CA habit starts today.',days:[
+    {b1:'PYQ 2024 full mock (2 hrs strict — Day 1 starts now)', b2:'Mock analysis — subject-wise wrong answers, note every gap'},
+    {b1:'PYQ 2023 — extract and solve all Assam questions only', b2:'Distractor pattern notebook — start logging how APSC tricks you'},
+    {b1:'Assam History — Varman dynasty + Kamarupa kingdom (PYQ-mapped)', b2:'Polity — Constitution basics + CA 30 min'},
+    {b1:'REVISION: Weeks content so far + Assam History PYQ re-drill', b2:'CA weekly compile — Assam events in separate column', sunday:true},
+    {b1:'Assam History — Ahom kingdom early period (PYQ-mapped)', b2:'Polity — Fundamental Rights + CA 30 min'},
+    {b1:'Assam History — Ahom peak: Saraighat, Lachit Borphukan', b2:'Polity — DPSP + Fundamental Duties + CA 30 min'},
+    {b1:'Assam History — British entry + Yandabo Treaty 1826', b2:'Economy basics: GDP, GNP, fiscal deficit + CA 30 min'},
   ]},
-  {wk:2,ph:1,focus:'Lock Polity foundation. Start Assam GK culture.',days:[
-    {b1:'PYQ 2022 full mock + analysis (2 hrs)',b2:'Assam GK Ch 1 Lucent IAS + CA weekly compile'},
-    {b1:'Assam History — Ahom-Mughal wars 1615–1671',b2:'Polity — State legislature + Governor + CA 30 min'},
-    {b1:'Assam GK — Literature: Sankardeva, Madhavdeva, works',b2:'Polity — President + Judiciary + CA 30 min'},
-    {b1:'Assam History — Modern era: Assam Accord, IMDT Act',b2:'Economy — Budget, fiscal deficit, Interim Budget + CA'},
-    {b1:'Assam GK — Awards: Siu-Ka-Pha, Kalicharan Brahma Award',b2:'Env — Biodiversity basics, Protected areas NE India + CA'},
-    {b1:'Assam Geography — Brahmaputra tributaries: north and south bank',b2:'S&T — Chemistry: solutions, elements in sugar + CA'},
-    {b1:'Assam History — key dates timeline drill (chronology questions)',b2:'Polity revision sprint + CA Phase 1 compile'},
+  {wk:2, ph:1, focus:'PYQ 2022 mock. Lock Polity. Start Assam GK source-first from Lucent IAS.',days:[
+    {b1:'Assam GK — Lucent IAS Ch 1: Tribes overview (Bodo, Mising, Karbi, Tiwa)', b2:'S&T — Physics: friction, gravity, circular motion + CA 30 min'},
+    {b1:'PYQ 2022 full mock (2 hrs)', b2:'Mock analysis + distractor patterns — note pattern types in notebook'},
+    {b1:'Assam GK — Lucent IAS Ch 2: Literature: Sankardeva, Madhavdeva, Buranjis', b2:'Polity — Parliament, Rajya Sabha, Money Bill + CA 30 min'},
+    {b1:'REVISION: Weeks 1–2 all topics + Assam History chronology drill', b2:'CA weekly compile + PYQ re-drill on weak topics from mocks', sunday:true},
+    {b1:'Assam History — Buranjis: Satsari, Kali Bharat, Weissali (PYQ-mapped)', b2:'Polity — President + Judiciary + CA 30 min'},
+    {b1:'Assam History — Modern: Assam Accord, IMDT Act, Freedom movement local leaders', b2:'Economy — Budget, fiscal deficit, Interim Budget concepts + CA 30 min'},
+    {b1:'Subject-wise mock — Assam History + Polity (30Q) → immediate analysis', b2:'Deep distractor analysis: which pattern tricked you most?'},
   ]},
-  {wk:3,ph:2,focus:'Economy now a major subject. Assam GK 50 min daily.',days:[
-    {b1:'Full mock + detailed score analysis',b2:'Economy — Rostow model, Lorenz curve, Gini coefficient + CA'},
-    {b1:'Assam GK — Charaideo Maidams, Satras, beels and wetlands',b2:'Economy — HDI, poverty indices, NITI Aayog MPI + CA'},
-    {b1:'Assam History — Buranjis: Satsari, Kali Bharat, Weissali',b2:'Polity — Election Commission, Delimitation Commission + CA'},
-    {b1:'Assam GK — Govt schemes: Orunodoi, MMUA, Atmanirbhar Portal',b2:'Env — Protected areas NE India, Ramsar sites + CA'},
-    {b1:'Assam Geography — Districts, borders, agroclimatic zones',b2:'S&T — Biology: miRNA, biofuels, bioremediation + CA'},
-    {b1:'Assam GK — Folk dances by community: Hacha Kekan, Baidima, Bisuyo',b2:'Economy — Monetary policy, RBI, repo rate + CA'},
-    {b1:'PYQ Assam combined drill (2022 + 2023 + 2024)',b2:'Error analysis — weak Assam topics noted in notebook'},
+  {wk:3, ph:2, focus:'Phase 2: Build. Assam GK daily from Lucent IAS. Economy rises to major subject.',days:[
+    {b1:'Assam GK — Lucent IAS Ch 3: Charaideo Maidams, Satras, beels + wetlands', b2:'Economy — HDI, poverty indices, NITI Aayog MPI + CA 30 min'},
+    {b1:'Assam GK — Lucent IAS Ch 4: Awards: Siu-Ka-Pha, Kalicharan Brahma, Shrimanta Sankardev', b2:'Env — Biodiversity basics, Protected areas NE India + CA 30 min'},
+    {b1:'Assam Geography — Brahmaputra tributaries: north bank + south bank (must-know list)', b2:'S&T — Chemistry: solutions, elements in sugar, non-biodegradable + CA 30 min'},
+    {b1:'REVISION: Phase 2 Week 1 topics + Assam GK chapter re-quiz', b2:'CA weekly compile + Env PYQ re-drill (Ramsar, conventions)', sunday:true},
+    {b1:'Assam GK — Lucent IAS Ch 5: Govt schemes: Orunodoi, MMUA, Atmanirbhar Portal, Kanaklata', b2:'Env — Ramsar sites NE India + Cartagena Protocol + CA 30 min'},
+    {b1:'Assam Geography — Districts, borders, agroclimatic zones (4 zones)', b2:'Economy — Rostow model, Lorenz curve, Gini coefficient + CA 30 min'},
+    {b1:'Subject-wise mock — Assam GK + Geography (30Q) → distractor analysis', b2:'Log all Assam GK wrong options — which distractor type used?'},
   ]},
-  {wk:4,ph:2,focus:'Contemporary Assam + NE connectivity. Sixth Schedule.',days:[
-    {b1:'Full mock + analysis',b2:'Assam GK — universities, institutions (Tezpur, Bhattadev) + CA'},
-    {b1:'Assam GK — Autonomous councils + Sixth Schedule in Assam',b2:'Polity — Special provisions Article 371C + CA'},
-    {b1:'Assam History — Freedom movement: Dhekiajuli, Patharughat, local leaders',b2:'Economy — Bad bank, eRupee, CBDC + CA'},
-    {b1:'Assam GK — Wildlife sanctuaries mapped to districts',b2:'Env — Ramsar sites + Green India Mission + CA'},
-    {b1:'NE India tribes + PVTGs: Maram, Riang, Birhor, Jarawa',b2:'S&T — Space missions: Aditya-L1, NISAR, Chandrayaan-3 + CA'},
-    {b1:'Assam GK — personalities + sobriquets: Geetikavi, Tyagbir, Lauha Manab',b2:'Economy — International bodies: WEF, SIPRI, G20 + CA'},
-    {b1:'Lucent IAS Assam — full chapter review + notes',b2:'CA May compilation finalise + Assam events column'},
+  {wk:4, ph:2, focus:'NE tribes, Env conventions, S&T basics. Build Assam Geography.',days:[
+    {b1:'Assam GK — Lucent IAS Ch 6: Folk dances by community: Hacha Kekan, Baidima, Bisuyo, Bhortal', b2:'Economy — Monetary policy, RBI, repo rate, CRR, SLR + CA 30 min'},
+    {b1:'NE India tribes + PVTGs: Maram, Riang, Birhor, Jarawa (PYQ-mapped)', b2:'S&T — Biology: miRNA, biofuels, bioremediation + CA 30 min'},
+    {b1:'Assam GK — Lucent IAS Ch 7: Autonomous councils + Sixth Schedule in Assam', b2:'Polity — Special provisions Article 371C + CA 30 min'},
+    {b1:'REVISION: Env + S&T + all Assam content so far + chapter re-quiz', b2:'CA weekly compile + mock error log review', sunday:true},
+    {b1:'Env — GHG protocol, global warming potential, Basel/Rotterdam/Minamata conventions', b2:'Polity — writs: certiorari, quo warranto, mandamus, prohibition + CA 30 min'},
+    {b1:'S&T — Physics: friction, mass vs weight, gravity, circular motion, evaporation (Class 10)', b2:'Economy — fiscal tools: CRR, GST, subsidy, fiscal deficit types + CA 30 min'},
+    {b1:'Subject-wise mock — Env + S&T (30Q) → deep distractor analysis', b2:'Error log update — note every wrong answer by subject + distractor type'},
   ]},
-  {wk:5,ph:2,focus:'Env + S&T push — 19 questions combined. High ROI.',days:[
-    {b1:'Full mock + analysis',b2:'Env consolidation sprint + CA compile'},
-    {b1:'Env — GHG protocol, global warming potential, Basel/Rotterdam/Minamata conventions',b2:'Assam GK — Tea industry history + Jhumur dance culture + CA'},
-    {b1:'S&T — Physics: friction, mass vs weight, gravity, circular motion, evaporation',b2:'Polity — Judicial review, writs: certiorari, quo warranto, mandamus + CA'},
-    {b1:'Env — Cartagena Protocol, SDGs (17 goals), biodiversity conventions',b2:'Assam History — Partition impact on Assam + Assam Pradesh formation + CA'},
-    {b1:'S&T — Bioremediation, nanomaterials, ITER nuclear fusion, miRNA',b2:'Economy — Demography: birth rate, cohort fertility, birth deficit + CA'},
-    {b1:'Assam GK — tea garden community + Sadan ethnolinguistic group',b2:'Env — Forest Survey Report, beta diversity, niche + CA'},
-    {b1:'PYQ — Env + S&T questions 2022–2024 combined drill',b2:'Error log update + weak topics noted in notebook'},
+  {wk:5, ph:2, focus:'Assam GK personalities, WLS, and heavy Economy build.',days:[
+    {b1:'Assam GK — Lucent IAS Ch 8: Personalities + sobriquets: Geetikavi, Tyagbir, Lauha Manab, Rasaraj', b2:'S&T — Space: Aditya-L1, NISAR, Chandrayaan-3, ITER + CA 30 min'},
+    {b1:'Economy — GDP vs GNP, post-development theory, Amartya Sen, Rostow stages', b2:'Polity — Anti-defection law, censure vs no-confidence + CA 30 min'},
+    {b1:'Assam GK — Lucent IAS Ch 9: Tea industry history + Jhumur dance + Sadan ethnolinguistic group', b2:'Env — Forest Survey Report, beta diversity, niche, upwelling + CA 30 min'},
+    {b1:'REVISION: Economy concepts + Env + S&T compiled + 50Q mixed practice mock', b2:'CA weekly compile + Assam GK chapters re-quiz from notebook', sunday:true},
+    {b1:'Assam History — Freedom movement: Dhekiajuli, Patharughat, Phulaguri uprisings', b2:'Economy — NITI Aayog, Finance Commission, fiscal vs monetary instruments + CA 30 min'},
+    {b1:'Assam GK — Lucent IAS Ch 10: Census data, SC/ST stats by district, sex ratio, languages', b2:'Economy — NEP 2020, Women\'s Reservation Bill 2023, Viksit Bharat + CA 30 min'},
+    {b1:'50Q mixed mock — Assam + Polity + History → full distractor analysis session', b2:'Log distractor patterns — are you seeing the same tricks repeat?'},
   ]},
-  {wk:6,ph:2,focus:'Economy deep dive — 18 questions in 2024!',days:[
-    {b1:'Full mock + analysis',b2:'Economy chapter revision + CA compile'},
-    {b1:'Economy — NITI Aayog, Finance Commission, fiscal tools: CRR, GST, subsidy',b2:'Assam GK — Orunodoi, Kanaklata Mahila Scheme details + CA'},
-    {b1:'Assam History — Post-independence Assam politics + ULFA Peace Deal 2023',b2:'Polity — Anti-defection law, censure vs no-confidence motion + CA'},
-    {b1:'Economy — GDP vs GNP, poverty indices, post-development theory',b2:'S&T — ITER, dark oxygen discovery, Bose-Einstein statistics + CA'},
-    {b1:'Assam GK — Jal Jeevan Mission, PMMSY, Sovereign Green Bonds',b2:'Env — SDGs (17 goals), Green India Mission + CA'},
-    {b1:'Economy — International trade: tariff, IMF, WTO, IMEC corridor',b2:'Assam Geography — oil fields (Digboi), plantation districts + CA'},
-    {b1:'PYQ Economy questions 2022–2024 full subject-wise drill',b2:'Error analysis + weak topics flagged in notebook'},
+  {wk:6, ph:2, focus:'Assam History modern era + heavy Economy + Polity deep build.',days:[
+    {b1:'Assam History — Ahom-Mughal wars 1615–1671 (chronology + battles)', b2:'Polity — State legislature + Governor + Article 356 + CA 30 min'},
+    {b1:'Economy — Demography: birth rate, cohort fertility, birth deficit, sex ratio + Lorenz', b2:'S&T — nanomaterials, dark oxygen, Bose-Einstein statistics, miRNA + CA 30 min'},
+    {b1:'Assam History — Post-independence Assam + ULFA + BTR Peace Deal 2023 context', b2:'Polity — Election Commission, Delimitation Commission + CA 30 min'},
+    {b1:'REVISION: All Assam History + Polity compiled + CA compile + 50Q mixed mock', b2:'Mock analysis — Pythagorean Expectation calculation for this mock', sunday:true},
+    {b1:'Assam GK — Lucent IAS Ch 11: Wildlife sanctuaries mapped to districts + national parks NE', b2:'Economy — International trade: tariff, IMF, WTO, IMEC corridor + CA 30 min'},
+    {b1:'Assam Geography — Oil fields (Digboi), plantation districts, Brahmaputra island districts', b2:'Economy — International bodies: WEF, SIPRI, G20, UNCCD + CA 30 min'},
+    {b1:'Subject-wise mock — Economy 25Q + analysis', b2:'Error log — Economy wrong answers + concepts to patch'},
   ]},
-  {wk:7,ph:2,focus:'Phase 2 consolidation. Mock scores should hit 140+.',days:[
-    {b1:'Full mock + analysis (aggressive review)',b2:'All-subjects weak-area targeted drilling'},
-    {b1:'Assam History — Assam Agitation, ULFA history, BTR Peace Deal 2023',b2:'Polity — Sixth Schedule, autonomous councils revision + CA'},
-    {b1:'Assam GK — Census data, SC/ST stats by district, sex ratio',b2:'Economy — NEP 2020, Women\'s Reservation Bill 2023 + CA'},
-    {b1:'India Geography — mountain passes, rivers, soil types, grasslands',b2:'National History — minimum PYQ topics only + CA'},
-    {b1:'Assam GK full revision — Lucent IAS key pages',b2:'Env + S&T rapid notes sprint + CA'},
-    {b1:'Economy revision — all key concepts + one-liners sheet',b2:'Polity — State special provisions revision + CA'},
-    {b1:'Phase 2 end self-assessment mock',b2:'CA May final compile + June tracking start'},
+  {wk:7, ph:2, focus:'Phase 2 consolidation. India Geo + National History (minimal). Assam GK sprint.',days:[
+    {b1:'India Geography — mountain passes, rivers, soil types, grasslands, ocean currents (PYQ-mapped)', b2:'National History — ONLY PYQ topics: education commissions, nationalist leaders + CA 30 min'},
+    {b1:'50Q mixed mock — Economy + Env + S&T + Geography', b2:'Deep distractor analysis — all subjects, classify every wrong option'},
+    {b1:'Assam GK — Lucent IAS full key pages sprint: culture, festivals, wetlands, institutions', b2:'Polity — high-frequency PYQ topics revision sprint + CA 30 min'},
+    {b1:'REVISION: Phase 2 full consolidation + CA May compile + error log full review', b2:'Assam GK chapter re-quiz from Lucent IAS + CA Assam events column', sunday:true},
+    {b1:'Polity — remaining gaps from error log + weak topic patch', b2:'Assam GK — weak areas from mocks + targeted drilling + CA 30 min'},
+    {b1:'Economy — all key concepts one-liners sheet + Assam History chronology drill', b2:'Env — SDGs 17 goals, Green India Mission, Gadgil/Kasturirangan + CA 30 min'},
+    {b1:'Phase 2 end: 50Q mixed mock + Pythagorean Expectation analysis', b2:'Strategy review — Elo ratings update for all subjects'},
   ]},
-  {wk:8,ph:3,focus:'Full syllabus rotation begins. Error log is your primary tool.',days:[
-    {b1:'Full mock + detailed analysis',b2:'CA June tracking start + error log opened'},
-    {b1:'Assam History rotation — high-frequency PYQ topics only',b2:'Economy key concepts rotation + CA'},
-    {b1:'Polity rotation — high-frequency PYQ topics',b2:'Env rotation sprint + CA'},
-    {b1:'Assam GK rotation — culture + schemes + awards',b2:'S&T rotation sprint + CA'},
-    {b1:'CA sweep — April to June 2025 events',b2:'Assam Geography rotation + CA'},
-    {b1:'Economy rotation + weak topic patch',b2:'National History + India Geo minimal + CA'},
-    {b1:'Error log review — all wrong answers from notebook',b2:'Weak topic drilling from error log'},
+  {wk:8, ph:3, focus:'Phase 3: First full 100Q mocks. Error log becomes your primary tool.',days:[
+    {b1:'Full 100Q mock — Paper 1 (2 hrs strict, phone off)', b2:'Complete analysis — subject-wise score, distractor types, PE calculation'},
+    {b1:'Error log — all wrong answers categorised: knowledge gap / misread / distractor trap / careless', b2:'CA sweep — April to June 2025 events + Assam events column'},
+    {b1:'Assam History + GK rotation — high-frequency PYQ topics only', b2:'Economy + Polity rotation + CA 30 min'},
+    {b1:'REVISION: Error log review + CA compile + weak topic drilling from mock 1', b2:'Assam GK weak chapters from error log — targeted re-read', sunday:true},
+    {b1:'Full 100Q mock 2 (2 hrs strict)', b2:'Immediate analysis — compare PE score with mock 1'},
+    {b1:'Env + S&T rotation sprint + CA sweep July–Sept 2025', b2:'Assam Geography + NE tribes + CA 30 min'},
+    {b1:'Polity rotation — high-freq PYQ topics + writs, schedules, articles', b2:'Economy rotation — poverty, demography, fiscal + CA 30 min'},
   ]},
-  {wk:9,ph:3,focus:'Two mocks this week. Target 150+ consistently.',days:[
-    {b1:'Full mock 1 (week\'s primary mock)',b2:'Analysis + CA June compile'},
-    {b1:'Assam History + GK error log topics',b2:'Economy error log topics + CA'},
-    {b1:'Polity — remaining gaps from error log',b2:'Assam GK error log drilling + CA'},
-    {b1:'Full mock 2 (mid-week strict 2 hrs)',b2:'Immediate analysis only'},
-    {b1:'CA sweep — July to December 2025 events',b2:'Env + S&T weak areas + CA'},
-    {b1:'Assam Geography + NE tribes revision',b2:'Economy final concepts + CA'},
-    {b1:'Score trend analysis — am I on target?',b2:'CA June weekly compile'},
+  {wk:9, ph:3, focus:'Two mocks this week. Score trend analysis. Target 150+ in every mock.',days:[
+    {b1:'Full 100Q mock 3 (2 hrs strict)', b2:'Analysis + distractor pattern review — is the notebook helping?'},
+    {b1:'Error log — Polity + Economy wrong answers patch', b2:'CA sweep — October to December 2025 events + Assam column'},
+    {b1:'Score trend analysis — plot mock 1,2,3 scores and PE scores', b2:'Economy + Polity targeted revision from error log + CA 30 min'},
+    {b1:'REVISION: Full syllabus rapid rotation + CA compile + Assam GK one-liners', b2:'Distractor pattern notebook review — which patterns still catching you?', sunday:true},
+    {b1:'Full 100Q mock 4 (2 hrs strict)', b2:'Analysis — push accuracy above 85% this mock'},
+    {b1:'Error log sweep — all subjects + weak topic drilling', b2:'Assam GK — gap fill from error log + CA 30 min'},
+    {b1:'Assam History + GK consolidation session — Lucent IAS key pages final read', b2:'Env + S&T final concept check + CA 30 min'},
   ]},
-  {wk:10,ph:3,focus:'Phase 3 final push. Aim for 155+ consistently.',days:[
-    {b1:'Full mock + analysis',b2:'CA compile + Assam GK highlights'},
-    {b1:'Full syllabus rotation — 30 min per weak subject',b2:'CA review + error log'},
-    {b1:'Assam History + GK combined revision',b2:'Economy + Polity quick notes + CA'},
-    {b1:'Full mock + analysis',b2:'Error log deep review'},
-    {b1:'Env + S&T revision sprint',b2:'CA January to June 2026 sweep start'},
-    {b1:'Assam GK one-liners: festivals, folk dances, awards, personalities',b2:'National History + India Geo fast revision + CA'},
-    {b1:'Phase 3 end assessment — score check and gap analysis',b2:'CA June final compile'},
+  {wk:10, ph:4, focus:'Phase 4: Peak mode. Two mocks per week. No new material after Jun 25.',days:[
+    {b1:'Full 100Q mock 5 (2 hrs strict)', b2:'Analysis — target 162+, calculate PE score'},
+    {b1:'CA sweep — January to April 2026 events', b2:'Assam events column — full compilation April 2025 to date + CA 30 min'},
+    {b1:'Error log full review — top distractor patterns identified and logged', b2:'Economy one-liners + Polity key Articles + Assam GK one-liners + CA 30 min'},
+    {b1:'REVISION: All subjects rapid + CA compile + Assam GK key pages + practice 50Q', b2:'Final Elo ratings update + strategy review for last 2 weeks', sunday:true},
+    {b1:'Full 100Q mock 6 (2 hrs strict)', b2:'Analysis + error log update'},
+    {b1:'Assam GK final highlights + one-liners sheet', b2:'Economy final concepts + CA May-June 2026 + CA 30 min'},
+    {b1:'NO NEW MATERIAL from today onwards. Error log + CA sweep only.', b2:'CA sweep — April to June 2026 Assam-specific events final'},
   ]},
-  {wk:11,ph:4,focus:'Phase 4: Peak mode. No new material after Jun 25.',days:[
-    {b1:'Full mock + analysis',b2:'CA final sweep (April–June 2025)'},
-    {b1:'Error log — Assam History + GK wrong answers',b2:'CA sweep (July–December 2025)'},
-    {b1:'Error log — Polity + Economy wrong answers',b2:'CA sweep (January–June 2026)'},
-    {b1:'Full mock (strict 2 hrs, phone off)',b2:'Immediate analysis only'},
-    {b1:'Assam GK final highlights + one-liners sheet',b2:'Economy one-liners + Polity key Articles'},
-    {b1:'Env + S&T rapid notes — no new material',b2:'CA Assam-specific final review'},
-    {b1:'Light revision only — no new material whatsoever',b2:'Scoring strategy review + exam sequence'},
+  {wk:11, ph:4, focus:'Final mocks. Revision only. Every hour is worth 3x now (Red Queen).',days:[
+    {b1:'Error log — Assam History + GK wrong answers final sweep', b2:'CA sweep — all months final read-through'},
+    {b1:'Full 100Q mock 7 (2 hrs strict)', b2:'Analysis — is score consistently 162+?'},
+    {b1:'Error log — Polity + Economy wrong answers', b2:'S&T + Env rapid notes only — no new material'},
+    {b1:'REVISION: Final full syllabus rapid + CA June compile + Assam GK one-liners key pages', b2:'Mock score trend review — PE vs actual across all mocks', sunday:true},
+    {b1:'Full 100Q mock 8 — final full mock', b2:'Final analysis — note top 20 wrong patterns only'},
+    {b1:'Error log final sweep — top 20 mistakes only. No new content.', b2:'CA Assam-specific final review'},
+    {b1:'CA final read-through + Assam GK one-liners + Polity key Articles', b2:'Scoring strategy + exam sequence: Polity → Assam Hist → Assam GK → CA → Economy → Env → S&T → Geo'},
   ]},
-  {wk:12,ph:4,focus:'Final countdown. Confidence, not cramming.',days:[
-    {b1:'Final full mock + analysis',b2:'CA compilation final read-through'},
-    {b1:'Assam History + GK notes only — no new learning',b2:'Polity key Articles + CA'},
-    {b1:'Economy + Env + S&T one-liners only',b2:'CA Assam-centric events final review'},
-    {b1:'Error log final sweep — top 20 mistakes only',b2:'Absolutely no new content today'},
-    {b1:'Light Assam GK + CA one last read',b2:'Rest early. Sleep by 10pm.'},
-    {b1:'No studying after 6pm. Logistics: admit card, pen, ID, centre route.',b2:'Exam sequence: Polity → Assam Hist → Assam GK → CA → Economy → Env → S&T → Geo'},
-    {b1:'EXAM DAY — July 5, 2026. 84 days of work. Go get it.',b2:'Sequence: Polity → Assam History → Assam GK → CA → Economy → Env → S&T → Geography',exam:true},
+  {wk:12, ph:4, focus:'Final 3 days. Confidence, rest, logistics.',days:[
+    {b1:'Light revision — notes only, absolutely no new material today', b2:'CA + Assam GK one-liners — one last light read'},
+    {b1:'No studying after 6pm. Logistics: admit card, pen, ID, centre route.', b2:'Sleep by 10pm. Exam sequence in mind. You have 80 days of work behind you.'},
+    {b1:'EXAM DAY — July 5, 2026. 80 days of work. Go get it.', b2:'Sequence: Polity → Assam History → Assam GK → CA → Economy → Env → S&T → Geography', exam:true},
   ]},
 ];
 
-// ============================================================
-// FRAMEWORKS DATA
-// ============================================================
-const FRAMEWORKS=[
-  {
-    id:'pe',name:'Pythagorean Expectation',origin:'Bill James · Baseball Analytics',
-    icon:'PE',iconBg:'#1B3D2F',iconColor:'#C47A2B',
-    apscBg:'#F2F8F4',apscBorder:'#1B3D2F',
-    insight:'A team\'s true performance level is revealed by its run differential, not its win-loss record. Wins can be inflated by luck in close games. The Pythagorean score filters out noise and shows your real preparation level.',
-    apsc:'In your mocks: PE Score = (Accuracy%)² ÷ ((Accuracy%)² + (Error%)²) × 200. If your PE score is much higher than your actual score, you\'re attempting too cautiously — leaving marks on the table. If your actual score beats PE, some luck was involved and may not repeat. Your PE trend across 8-10 mocks is your true preparation curve.',
-  },
-  {
-    id:'ev',name:'Expected Value (EV)',origin:'Poker Strategy · Decision Theory',
-    icon:'EV',iconBg:'#534AB7',iconColor:'white',
-    apscBg:'#EEEDFE',apscBorder:'#534AB7',
-    insight:'Every decision has a long-run average outcome. Positive EV decisions are correct even when they sometimes fail. Negative EV decisions are wrong even when they sometimes succeed. Play the math, not the moment.',
-    apsc:'In APSC: EV = (Confidence% × 2) − ((1−Confidence%) × 0.5). The break-even point is just 20% confidence — if you have better than 1-in-5 odds of being right, attempting the question is mathematically correct. Most candidates set their personal threshold at 50–60%, which is overly conservative and costs them 5–10 marks per paper.',
-  },
-  {
-    id:'vorp',name:'VORP — Value Over Replacement',origin:'Baseball Analytics · Sabermetrics',
-    icon:'V+',iconBg:'#C47A2B',iconColor:'white',
-    apscBg:'#FDF0E0',apscBorder:'#C47A2B',
-    insight:'VORP measures how much better a player performs compared to a freely available replacement. The insight: not all playing time has equal value. A star player\'s marginal contribution is enormous; a bench player\'s is near zero.',
-    apsc:'Your "replacement candidate" is someone who only studied UPSC material. Assam GK has massive VORP because UPSC candidates score ~2/10 there. Every hour on Assam GK beats the replacement by 8 marks. National History has near-zero VORP — everyone scores similarly regardless of extra effort. Your study time should be allocated by VORP, not by comfort or familiarity.',
-  },
-  {
-    id:'margin',name:'Margin Gains',origin:'Dave Brailsford · British Cycling Team',
-    icon:'1%',iconBg:'#059669',iconColor:'white',
-    apscBg:'#F0FDF4',apscBorder:'#059669',
-    insight:'British Cycling went from near-zero Olympic medals to domination by identifying and improving every single factor by 1%. No single change was significant. The compound effect of 50 small improvements was transformational.',
-    apsc:'Stop trying to master Economy in one week. Instead: lock in the 6 Economy question types APSC actually repeats (Rostow, Gini, RBI tools). Lock in the 8 most repeated Assam GK topics. Each small, specific improvement compounds. A 2% gain in accuracy across 6 subjects = 12 extra marks. That could be the difference between clearing and not clearing in a high-cutoff year.',
-  },
-  {
-    id:'elo',name:'Elo Rating System',origin:'Arpad Elo · Chess Federation',
-    icon:'Elo',iconBg:'#D94B80',iconColor:'white',
-    apscBg:'#FBEAF0',apscBorder:'#D94B80',
-    insight:'Elo tracks skill dynamically — you gain rating when you beat opponents above your level, lose rating when you underperform against weaker ones. It self-corrects toward your true ability and is a better predictor than any single result.',
-    apsc:'Rate each subject from 800–2000 after each mock. Score above expected on Polity → Polity Elo goes up. Score below expected on Economy → Economy Elo drops. Study time each week should flow toward your lowest-rated subjects. This makes your preparation plan self-correcting rather than static and prevents the common mistake of over-studying comfortable subjects.',
-  },
-  {
-    id:'redqueen',name:'Red Queen Effect',origin:'Leigh Van Valen · Evolutionary Biology',
-    icon:'RQ',iconBg:'#A32D2D',iconColor:'white',
-    apscBg:'#FCEBEB',apscBorder:'#A32D2D',
-    insight:'In the Red Queen\'s race, you must keep running just to stay in the same place. Species that stop evolving go extinct even in a stable environment because competitors keep improving around them.',
-    apsc:'With 78 vacancies this year versus 280-330 in previous years, the field got more competitive overnight. Maintaining your current preparation level only keeps you at the same percentile — everyone else is also pushing harder. The Red Queen logic says: the final 2 weeks of Phase 4 are disproportionately valuable because most candidates decelerate while you should accelerate. Effort in the last 14 days is worth 3× its equivalent effort in Week 1.',
-  },
-  {
-    id:'antifragile',name:'Antifragility',origin:'Nassim Taleb · Risk Philosophy',
-    icon:'AF',iconBg:'#185FA5',iconColor:'white',
-    apscBg:'#E6F1FB',apscBorder:'#185FA5',
-    insight:'Fragile things break under stress. Robust things survive it. Antifragile things get stronger from it. Taleb\'s insight: systems that gain from disorder are more powerful than those that merely resist it.',
-    apsc:'A bad mock is antifragile information — it tells you exactly where to improve. A task you miss and the app reshuffles is the plan becoming antifragile rather than collapsing. A topic you can\'t understand is a targeted opportunity. Build antifragile study habits: every failure makes the next session more targeted, not more anxious. The error log is your antifragility engine.',
-  },
-  {
-    id:'regression',name:'Regression to the Mean',origin:'Francis Galton · Statistics',
-    icon:'~μ',iconBg:'#6B7280',iconColor:'white',
-    apscBg:'#F9FAFB',apscBorder:'#6B7280',
-    insight:'Extreme outcomes are partly caused by luck. The next observation will move toward the average. This is why a player who has the best season of his career usually has a worse one next year — the luck component reverts.',
-    apsc:'After an unusually high mock score: don\'t overhaul what\'s working, some luck was involved and regression will occur. After an unusually low mock score: don\'t panic-overhaul your strategy, some bad luck was involved. Track your 3-mock rolling average, not individual performances. Your true preparation level is the trend line, not the peaks and valleys. Never make major strategy changes based on a single data point.',
-  },
-];
-
-// ============================================================
-// COMPLETION REWARD MESSAGES
-// ============================================================
-const REWARDS_BY_SUBJECT={
-  'Assam History':{fw:'VORP',icon:'V+',bg:'#FDF0E0',color:'#854F0B',msg:'Maximum VORP play. Assam History is where every hour you invest beats the UPSC-trained replacement candidate by 8 marks. You just extended your lead.'},
-  'Assam GK':{fw:'VORP',icon:'V+',bg:'#FDF0E0',color:'#854F0B',msg:'Highest VORP in the entire paper. The average candidate scores 2/10 on Assam GK. You are not the average candidate.'},
-  'Mock / PYQ':{fw:'Pythagorean Expectation',icon:'PE',bg:'#F2F8F4',color:'#1B3D2F',msg:'Run differential building. Your Pythagorean score is what counts — not the lucky days, not the hard days. Every mock sharpens your true preparation curve.'},
-  'Economy':{fw:'Margin Gains',icon:'1%',bg:'#F0FDF4',color:'#059669',msg:'Economy jumped from 6 to 18 questions in 3 years. Every concept you lock today is a 1% gain compounding toward 36 marks at stake on July 5.'},
-  'Polity':{fw:'Win Shares',icon:'WS',bg:'#F2F8F4',color:'#1B3D2F',msg:'Polity Win Share credited. Stable at 14 questions every year — this is your most reliable run-scorer. You are protecting your scoring baseline.'},
-  'Current Affairs':{fw:'Red Queen',icon:'RQ',bg:'#FCEBEB',color:'#A32D2D',msg:'You ran today. Every candidate who skipped Current Affairs just fell behind. In a Red Queen race, showing up every day is the winning strategy.'},
-  'Env & Ecology':{fw:'Margin Gains',icon:'1%',bg:'#F0FDF4',color:'#059669',msg:'1% better on Env & Ecology. 10 questions at stake. The small consistent gains are building a score margin the lucky guessers won\'t have.'},
-  'S & T':{fw:'Margin Gains',icon:'1%',bg:'#F0FDF4',color:'#059669',msg:'Free marks secured. Class 10 physics and chemistry appear every year. Near-zero revision cost, near-maximum Margin Gain. This is the system working.'},
-  'Error Log':{fw:'Antifragility',icon:'AF',bg:'#E6F1FB',color:'#185FA5',msg:'Antifragile move. You just turned a past mistake into a future advantage. The preparation got stronger from the error, not weaker. That is the system working exactly as designed.'},
-  'Assam Geography':{fw:'VORP',icon:'V+',bg:'#FDF0E0',color:'#854F0B',msg:'Assam Geography: high VORP, low investment. Rivers, districts, borders — this is territory most UPSC candidates leave blank. You just banked it.'},
-  'General':{fw:'Margin Gains',icon:'1%',bg:'#F0FDF4',color:'#059669',msg:'1% better. That is all each task requires. 84 days of 1% improvements compound into a score that clears this year\'s higher cutoff.'},
+// ─────────────────────────────────────────────
+// SUBJECT COLORS
+// ─────────────────────────────────────────────
+const SC = {
+  'Current Affairs':'#0891B2','Mock / PYQ':'#1B3D2F','Assam History':'#E85A30',
+  'Assam GK':'#D94B80','Assam Geography':'#C47A2B','Polity':'#2D7A5A',
+  'Economy':'#7C3AED','Env & Ecology':'#059669','S & T':'#6D28D9',
+  'Error Log':'#B45309','Revision':'#534AB7','India / World Geo':'#6B7280',
+  'National History':'#9CA3AF','General':'#888'
 };
 
-const FULL_DAY_REWARDS=[
-  {fw:'Red Queen',msg:'Full day done. In the Red Queen race, you ran. Every candidate who stopped today just fell a lap behind. You didn\'t.'},
-  {fw:'Margin Gains',msg:'Today\'s 1% banked. 84 small deposits. The compound interest of preparation pays out on July 5.'},
-  {fw:'Antifragility',msg:'Today made you stronger. Whatever the tasks were — difficult, uncomfortable, or unfamiliar — you showed up. The preparation is now antifragile.'},
-  {fw:'VORP',msg:'Another day of value over replacement. The candidate you\'re competing with studied for 2 hours today. So did you. The difference: you studied the right things.'},
-  {fw:'Elo',msg:'Elo update processing. Every subject you practised today registered a rating improvement. The preparation curve is moving upward.'},
-  {fw:'Pythagorean Expectation',msg:'Run differential positive. Your Pythagorean score for today\'s session: better than yesterday. The trend line is heading toward July 5.'},
-  {fw:'Expected Value',msg:'+EV confirmed. Today\'s expected value was positive before you started. You collected it. That is all preparation is — collecting positive EV decisions repeatedly.'},
-  {fw:'Regression to the Mean',msg:'Consistent work day. You are building the mean — the number that counts most. Peaks and valleys matter less than the baseline you are raising every day.'},
-];
-
-// ============================================================
-// URGENCY AND SUBJECT INFERENCE
-// ============================================================
-function inferUrgency(t){
-  const s=t.toLowerCase();
-  if(/current affairs|ca compile|ca sweep|ca final|ca june|ca may|ca week|\+ ca$|ca 30|ca weekly/.test(s))return 10;
-  if(/\bmock\b|pyq/.test(s))return 9;
-  if(/assam history|ahom|varman|buranji|yandabo|saraighat|lachit|patharughat|dhekiajuli|freedom movement|assam accord|ulfa/.test(s))return 9;
-  if(/assam gk|lucent ias|charaideo|satra|folk dance|orunodoi|mmua|jal jeevan|kanaklata|atmanirbhar|tribes.*assam|awards/.test(s))return 9;
-  if(/error log/.test(s))return 8;
-  if(/polity|constitution|parliament|judiciary|election commission|fundamental rights|dpsp/.test(s))return 8;
-  if(/economy|gdp|niti|rbi|gini|rostow|lorenz|fiscal|monetary|budget|interim budget/.test(s))return 8;
-  if(/env|ecology|biodiversity|ramsar|convention|climate|sdg|green india/.test(s))return 7;
-  if(/s&t|physics|chemistry|biology|space|isro|nanomaterial|iter|mirna|bioremediation/.test(s))return 7;
-  if(/assam geography|brahmaputra.*trib|districts.*assam|borders.*assam|agroclimatic/.test(s))return 6;
-  if(/geography|mountain|soil.*type|grassland|india geo|world geo/.test(s))return 5;
-  if(/national history|ancient|medieval/.test(s))return 4;
+// ─────────────────────────────────────────────
+// URGENCY + SUBJECT INFERENCE
+// ─────────────────────────────────────────────
+function inferUrgency(t) {
+  const s = t.toLowerCase();
+  if (/revision|re-drill|re-quiz|compile|sweep|weekly compile/.test(s)) return 10;
+  if (/current affairs|\+ ca$|ca 30|ca weekly|ca compile|ca sweep/.test(s)) return 10;
+  if (/\bmock\b|pyq/.test(s)) return 9;
+  if (/assam history|ahom|varman|buranji|yandabo|saraighat|lachit|patharughat|dhekiajuli|freedom movement|assam accord|ulfa/.test(s)) return 9;
+  if (/assam gk|lucent|charaideo|satra|folk dance|orunodoi|mmua|jal jeevan|kanaklata|tribes.*assam|awards|personalities/.test(s)) return 9;
+  if (/error log/.test(s)) return 8;
+  if (/polity|constitution|parliament|judiciary|election commission|fundamental rights|dpsp|article/.test(s)) return 8;
+  if (/economy|gdp|niti|rbi|gini|rostow|lorenz|fiscal|monetary|budget|interim budget/.test(s)) return 8;
+  if (/env|ecology|biodiversity|ramsar|convention|climate|sdg|green india/.test(s)) return 7;
+  if (/s&t|physics|chemistry|biology|space|isro|nanomaterial|iter|mirna|bioremediation/.test(s)) return 7;
+  if (/assam geography|brahmaputra.*trib|districts.*assam|agroclimatic|oil field/.test(s)) return 6;
+  if (/geography|mountain|soil.*type|grassland|india geo|world geo/.test(s)) return 5;
+  if (/national history|ancient|medieval/.test(s)) return 4;
   return 6;
 }
 
-function inferSubject(t){
-  const s=t.toLowerCase();
-  if(/current affairs|ca compile|ca sweep|ca final|\+ ca/.test(s))return'Current Affairs';
-  if(/\bmock\b|pyq/.test(s))return'Mock / PYQ';
-  if(/assam history|ahom|varman|buranji|saraighat|lachit|yandabo/.test(s))return'Assam History';
-  if(/assam gk|lucent|folk dance|charaideo|satra|orunodoi|tribes.*assam|awards/.test(s))return'Assam GK';
-  if(/assam geography|tributaries|agroclimatic/.test(s))return'Assam Geography';
-  if(/polity|constitution|parliament|judiciary|election commission/.test(s))return'Polity';
-  if(/economy|gdp|rostow|lorenz|gini|niti|rbi|fiscal|monetary|budget/.test(s))return'Economy';
-  if(/env|ecology|biodiversity|ramsar|sdg|green india/.test(s))return'Env & Ecology';
-  if(/s&t|physics|chemistry|biology|space|isro|iter/.test(s))return'S & T';
-  if(/error log/.test(s))return'Error Log';
-  if(/geography|mountain|soil|grassland/.test(s))return'India / World Geo';
-  if(/national history|ancient|medieval/.test(s))return'National History';
-  return'General';
+function inferSubject(t) {
+  const s = t.toLowerCase();
+  if (/revision|re-quiz|re-drill/.test(s)) return 'Revision';
+  if (/current affairs|\+ ca$|ca compile|ca sweep|ca 30/.test(s)) return 'Current Affairs';
+  if (/\bmock\b|pyq/.test(s)) return 'Mock / PYQ';
+  if (/assam history|ahom|varman|buranji|saraighat|lachit|yandabo|patharughat/.test(s)) return 'Assam History';
+  if (/assam gk|lucent|folk dance|charaideo|satra|orunodoi|tribes.*assam|awards|personalities/.test(s)) return 'Assam GK';
+  if (/assam geography|tributaries|agroclimatic|oil field/.test(s)) return 'Assam Geography';
+  if (/polity|constitution|parliament|judiciary|election|article \d/.test(s)) return 'Polity';
+  if (/economy|gdp|rostow|lorenz|gini|niti|rbi|fiscal|monetary|budget|demography/.test(s)) return 'Economy';
+  if (/env|ecology|biodiversity|ramsar|sdg|green india|convention/.test(s)) return 'Env & Ecology';
+  if (/s&t|physics|chemistry|biology|space|isro|iter|nanomaterial/.test(s)) return 'S & T';
+  if (/error log/.test(s)) return 'Error Log';
+  if (/geography|mountain|soil|grassland/.test(s)) return 'India / World Geo';
+  if (/national history|ancient|medieval/.test(s)) return 'National History';
+  return 'General';
 }
 
-const SC={'Current Affairs':'#0891B2','Mock / PYQ':'#1B3D2F','Assam History':'#E85A30','Assam GK':'#D94B80','Assam Geography':'#C47A2B','Polity':'#2D7A5A','Economy':'#7C3AED','Env & Ecology':'#059669','S & T':'#6D28D9','Error Log':'#B45309','India / World Geo':'#6B7280','National History':'#9CA3AF','General':'#888'};
-
-// VORP scores (relative to UPSC-trained replacement)
-const VORP_DATA=[
-  {s:'Assam GK',vorp:9,note:'UPSC candidates score ~2/10 here'},
-  {s:'Assam History',vorp:8,note:'PYQ-specific topics give big edge'},
-  {s:'Economy',vorp:7,note:'Rising fast — 18 Qs in 2024'},
-  {s:'Assam Geography',vorp:7,note:'High VORP, low time investment'},
-  {s:'Current Affairs',vorp:6,note:'Assam events separate you from field'},
-  {s:'Env & Ecology',vorp:5,note:'Repeatable conventions questions'},
-  {s:'S & T',vorp:5,note:'Class 10 level — high ROI'},
-  {s:'Polity',vorp:3,note:'Everyone prepares this — lower edge'},
-  {s:'India / World Geo',vorp:2,note:'Common knowledge, low differentiation'},
-  {s:'National History',vorp:1,note:'Only 1 question in 2024 — near zero'},
-];
-
-// ============================================================
-// GENERATE TASKS
-// ============================================================
-const TASKS=[];
-SD.forEach(wk=>{
-  wk.days.forEach((day,di)=>{
-    const dIdx=(wk.wk-1)*7+di;
-    const d=new Date(2026,3,13);d.setDate(d.getDate()+dIdx);
-    const iso=localISO(d);
-    [{text:day.b1,bl:1},{text:day.b2,bl:2}].forEach(({text,bl})=>{
-      const subj=inferSubject(text);
-      TASKS.push({id:`w${wk.wk}d${di}b${bl}`,wk:wk.wk,di,bl,text,urgency:inferUrgency(text),subject:subj,color:SC[subj]||'#888',originalDate:iso,phase:wk.ph});
+// ─────────────────────────────────────────────
+// GENERATE TASKS ARRAY
+// ─────────────────────────────────────────────
+const TASKS = [];
+SD.forEach(wk => {
+  wk.days.forEach((day, di) => {
+    const dIdx = (wk.wk - 1) * 7 + di;
+    const d = new Date(2026, 3, 17);
+    d.setDate(d.getDate() + dIdx);
+    const iso = localISO(d);
+    const isSun = !!day.sunday;
+    const isExam = !!day.exam;
+    [{text: day.b1, bl: 1}, {text: day.b2, bl: 2}].forEach(({text, bl}) => {
+      const subj = inferSubject(text);
+      TASKS.push({
+        id: `w${wk.wk}d${di}b${bl}`,
+        wk: wk.wk, di, bl, text,
+        urgency: inferUrgency(text),
+        subject: subj,
+        color: SC[subj] || '#888',
+        originalDate: iso,
+        phase: wk.ph,
+        sunday: isSun,
+        exam: isExam
+      });
     });
   });
 });
 
-// ============================================================
+// ─────────────────────────────────────────────
 // STATE
-// ============================================================
-let ST={completed:[],rescheduled:{},lastAutoCheck:'',overflow:[],elo:{
+// ─────────────────────────────────────────────
+const DEFAULT_ELO = {
   'Assam History':1200,'Assam GK':1000,'Polity':1400,'Economy':1100,
   'Current Affairs':900,'Env & Ecology':1100,'S & T':1100,
   'Assam Geography':1100,'India / World Geo':1200,'National History':1600
-}};
+};
+let ST = {completed:[], rescheduled:{}, lastAutoCheck:'', overflow:[], elo:{...DEFAULT_ELO}, distractors:{}};
 
-function loadST(){
-  try{
-    const s=localStorage.getItem(STORAGE_KEY);
-    if(s){const p=JSON.parse(s);ST={...ST,...p};if(!ST.elo)ST.elo={'Assam History':1200,'Assam GK':1000,'Polity':1400,'Economy':1100,'Current Affairs':900,'Env & Ecology':1100,'S & T':1100,'Assam Geography':1100,'India / World Geo':1200,'National History':1600};}
-    else {
-      // Migrate completed tasks from older versions (preserve ticked tasks)
-      for(const oldKey of['apsc_v5','apsc_v4','apsc_dynamic_v3','apsc_dynamic_v2']){
-        const old=localStorage.getItem(oldKey);
-        if(old){const p=JSON.parse(old);if(p.completed&&p.completed.length>0){ST.completed=p.completed;break;}}
-      }
+function loadST() {
+  try {
+    const s = localStorage.getItem(STORAGE_KEY);
+    if (s) {
+      const p = JSON.parse(s);
+      ST = {...ST, ...p};
+      if (!ST.elo) ST.elo = {...DEFAULT_ELO};
+      if (!ST.distractors) ST.distractors = {};
     }
-  }catch(e){}
+  } catch(e) {}
 }
-function saveST(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(ST));}catch(e){}}
-
-// ============================================================
-// DATE UTILITIES
-// ============================================================
-function localISO(d){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;}
-function isoNow(){return localISO(new Date());}
-function isoToLocal(iso){const p=iso.split('-');return new Date(+p[0],+p[1]-1,+p[2]);}
-function addDays(iso,n){const d=isoToLocal(iso);d.setDate(d.getDate()+n);return localISO(d);}
-function fmtDate(iso){const d=isoToLocal(iso);const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];const M=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return`${DAYS[d.getDay()]} ${d.getDate()} ${M[d.getMonth()]}`;}
-function dayNum(){const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const sm=new Date(2026,3,13);const diff=Math.floor((tm-sm)/86400000);return Math.max(1,Math.min(84,diff+1));}
-function daysLeft(){const t=new Date();const tm=new Date(t.getFullYear(),t.getMonth(),t.getDate());const em=new Date(EXAM_Y,EXAM_M,EXAM_D);return Math.max(0,Math.ceil((em-tm)/86400000));}
-function cutoffISO(){return localISO(new Date(CUTOFF_Y,CUTOFF_M,CUTOFF_D));}
-function examISO(){return localISO(new Date(EXAM_Y,EXAM_M,EXAM_D));}
-function phaseInfo(d){if(d<=14)return{n:1,name:'Calibrate',cls:'ph1'};if(d<=49)return{n:2,name:'Build',cls:'ph2'};if(d<=70)return{n:3,name:'Integrate',cls:'ph3'};return{n:4,name:'Peak',cls:'ph4'};}
-function getTask(id){return TASKS.find(t=>t.id===id);}
-function getSchedDate(id){return ST.rescheduled[id]||getTask(id)?.originalDate;}
-function isCompleted(id){return ST.completed.includes(id);}
-function getTasksForDate(iso,pendingOnly=false){return TASKS.filter(t=>{if(getSchedDate(t.id)!==iso)return false;if(pendingOnly&&isCompleted(t.id))return false;return true;});}
-function getAllTaskCountForDate(iso){return TASKS.filter(t=>getSchedDate(t.id)===iso).length;}
-function urgencyColor(u){if(u>=10)return'#0891B2';if(u>=9)return'#E85A30';if(u>=8)return'#D97706';if(u>=7)return'#059669';if(u>=6)return'#6B7280';return'#9CA3AF';}
-
-// ============================================================
-// RESHUFFLING ENGINE
-// ============================================================
-function cascadeTask(id,fromIso,depth=0){
-  if(depth>60){if(!ST.overflow.includes(id))ST.overflow.push(id);return;}
-  const nextIso=addDays(fromIso,1);
-  if(nextIso>cutoffISO()){if(!ST.overflow.includes(id))ST.overflow.push(id);return;}
-  const total=getAllTaskCountForDate(nextIso);
-  if(total<2){ST.rescheduled[id]=nextIso;return;}
-  const pending=getTasksForDate(nextIso,true);
-  if(pending.length===0){cascadeTask(id,nextIso,depth+1);return;}
-  const least=pending.reduce((m,t)=>(getTask(t.id)?.urgency||5)<(getTask(m.id)?.urgency||5)?t:m);
-  cascadeTask(least.id,nextIso,depth+1);
-  ST.rescheduled[id]=nextIso;
+function saveST() {
+  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(ST)); } catch(e) {}
 }
 
-function reshuffleTask(id){ST.overflow=ST.overflow.filter(x=>x!==id);cascadeTask(id,isoNow());}
-function reshuffleTodayMissed(){const t=isoNow();let c=0;getTasksForDate(t,true).forEach(t=>{reshuffleTask(t.id);c++;});saveST();return c;}
-function autoCheckMissed(){
-  const today=isoNow();
-  if(ST.lastAutoCheck>=today)return 0;
-  let n=0;
-  let d=ST.lastAutoCheck?addDays(ST.lastAutoCheck,1):'2026-04-13';
-  while(d<today){getTasksForDate(d,true).forEach(t=>{if(!ST.rescheduled[t.id]&&!ST.overflow.includes(t.id)){cascadeTask(t.id,d);n++;}});d=addDays(d,1);}
-  ST.lastAutoCheck=today;saveST();return n;
+// ─────────────────────────────────────────────
+// TASK ACCESSORS
+// ─────────────────────────────────────────────
+function getTask(id) { return TASKS.find(t => t.id === id); }
+function getSchedDate(id) { return ST.rescheduled[id] || getTask(id)?.originalDate; }
+function isCompleted(id) { return ST.completed.includes(id); }
+function getTasksForDate(iso, pendingOnly = false) {
+  return TASKS.filter(t => {
+    if (getSchedDate(t.id) !== iso) return false;
+    if (pendingOnly && isCompleted(t.id)) return false;
+    return true;
+  });
+}
+function getAllTaskCountForDate(iso) {
+  return TASKS.filter(t => getSchedDate(t.id) === iso).length;
+}
+function urgencyColor(u) {
+  if (u >= 10) return '#534AB7';
+  if (u >= 9) return '#E85A30';
+  if (u >= 8) return '#D97706';
+  if (u >= 7) return '#059669';
+  if (u >= 6) return '#6B7280';
+  return '#9CA3AF';
 }
 
-// ============================================================
-// COMPLETION WITH REWARD
-// ============================================================
-function toggleComplete(id){
-  const wasDone=isCompleted(id);
-  if(wasDone){ST.completed=ST.completed.filter(x=>x!==id);}
-  else{
+// ─────────────────────────────────────────────
+// RESHUFFLING ENGINE (no reshuffling of Sunday tasks)
+// ─────────────────────────────────────────────
+function cascadeTask(id, fromIso, depth = 0) {
+  if (depth > 60) { if (!ST.overflow.includes(id)) ST.overflow.push(id); return; }
+  const nextIso = addDays(fromIso, 1);
+  const exam = localISO(new Date(2026,6,2));
+  if (nextIso > exam) { if (!ST.overflow.includes(id)) ST.overflow.push(id); return; }
+  if (isSunday(nextIso)) { cascadeTask(id, nextIso, depth + 1); return; }
+  const total = getAllTaskCountForDate(nextIso);
+  if (total < 2) { ST.rescheduled[id] = nextIso; return; }
+  const pending = getTasksForDate(nextIso, true).filter(t => !getTask(t.id)?.sunday);
+  if (pending.length === 0) { cascadeTask(id, nextIso, depth + 1); return; }
+  const least = pending.reduce((m, t) => (getTask(t.id)?.urgency || 5) < (getTask(m.id)?.urgency || 5) ? t : m);
+  cascadeTask(least.id, nextIso, depth + 1);
+  ST.rescheduled[id] = nextIso;
+}
+
+function reshuffleTask(id) {
+  ST.overflow = ST.overflow.filter(x => x !== id);
+  cascadeTask(id, isoNow());
+}
+
+function reshuffleTodayMissed() {
+  const today = isoNow();
+  let count = 0;
+  getTasksForDate(today, true).filter(t => !getTask(t.id)?.sunday).forEach(t => {
+    reshuffleTask(t.id);
+    count++;
+  });
+  saveST();
+  return count;
+}
+
+function autoCheckMissed() {
+  const today = isoNow();
+  if (ST.lastAutoCheck >= today) return 0;
+  let n = 0;
+  let d = ST.lastAutoCheck ? addDays(ST.lastAutoCheck, 1) : '2026-04-17';
+  while (d < today) {
+    if (!isSunday(d)) {
+      getTasksForDate(d, true).filter(t => !getTask(t.id)?.sunday).forEach(t => {
+        if (!ST.rescheduled[t.id] && !ST.overflow.includes(t.id)) {
+          cascadeTask(t.id, d);
+          n++;
+        }
+      });
+    }
+    d = addDays(d, 1);
+  }
+  ST.lastAutoCheck = today;
+  saveST();
+  return n;
+}
+
+// ─────────────────────────────────────────────
+// COMPLETION REWARDS
+// ─────────────────────────────────────────────
+const REWARDS = {
+  'Assam History': {fw:'VORP', msg:'Assam History VORP: maximum. Every hour here beats the UPSC-trained replacement by 8 marks. Lead extended.'},
+  'Assam GK': {fw:'VORP', msg:'Highest VORP in the paper. The average UPSC candidate scores 2/10 on Assam GK. You are not the average candidate.'},
+  'Mock / PYQ': {fw:'Pythagorean Expectation', msg:'Run differential building. Every mock sharpens your PE score — your true preparation curve, separate from luck.'},
+  'Economy': {fw:'Margin Gains', msg:'Economy jumped 6→11→18 Qs in 3 years. Every concept locked today is a 1% gain compounding toward 36 marks on July 5.'},
+  'Polity': {fw:'Win Shares', msg:'Polity Win Share credited. Stable at 14 questions every year. Your most reliable scoring baseline, protected.'},
+  'Current Affairs': {fw:'Red Queen', msg:'You ran today. Every candidate who skipped CA fell behind. In a Red Queen race, showing up every single day is the strategy.'},
+  'Env & Ecology': {fw:'Margin Gains', msg:'1% better on Env & Ecology. 10 questions at stake. Small consistent gains building a margin lucky guessers won\'t have.'},
+  'S & T': {fw:'Margin Gains', msg:'Free marks secured. Class 10 physics and chemistry appear every year. Near-zero investment, near-maximum Margin Gain.'},
+  'Error Log': {fw:'Antifragility', msg:'Antifragile move. Past mistake converted to future advantage. The preparation got stronger from the error. That is the system working.'},
+  'Revision': {fw:'Spaced Repetition', msg:'Ebbinghaus curve defeated. Without this revision, you\'d forget 67% of last week\'s content. You just locked it in permanently.'},
+  'Assam Geography': {fw:'VORP', msg:'Assam Geography: high VORP, low investment. Rivers, districts, borders — territory most UPSC candidates leave blank. Banked.'},
+  'General': {fw:'Margin Gains', msg:'1% better. 80 days of 1% improvements compound into the score that clears this year\'s higher cutoff.'},
+};
+
+const FULL_DAY_REWARDS = [
+  {fw:'Red Queen', msg:'Full day done. You ran. Every candidate who stopped today fell a lap behind. The race rewards consistency, not intensity.'},
+  {fw:'Margin Gains', msg:'Today\'s 1% banked. 80 small deposits. The compound interest of preparation pays out on July 5.'},
+  {fw:'Antifragility', msg:'Today made you stronger. Whatever the tasks were — you showed up. The preparation is antifragile because you are.'},
+  {fw:'VORP', msg:'Another day of value over replacement. You studied the right things. That is the entire difference.'},
+  {fw:'Spaced Repetition', msg:'Memory consolidated. The Ebbinghaus curve is working for you, not against you. Tomorrow\'s recall will be sharper.'},
+  {fw:'Expected Value', msg:'+EV confirmed. Every task today was a positive expected value decision. That is all preparation is — collecting +EV decisions repeatedly.'},
+];
+
+const SUNDAY_DONE_REWARDS = [
+  {fw:'Spaced Repetition', msg:'Revision Sunday complete. You just defeated the Ebbinghaus Forgetting Curve. Content studied this week is now locked into medium-term memory. This is where the real learning happens — not in the initial study, but in the deliberate recall.'},
+  {fw:'Antifragility', msg:'Every revision Sunday makes the preparation more antifragile. When the exam paper has a difficult question, you won\'t be relying on a single exposure. You\'ll have layers of recall behind you.'},
+  {fw:'Regression to the Mean', msg:'Consistent revision builds the mean — the number that counts most. Peaks and valleys in your mocks matter less than the baseline you are raising every single Sunday.'},
+];
+
+function toggleComplete(id) {
+  const wasDone = isCompleted(id);
+  if (wasDone) {
+    ST.completed = ST.completed.filter(x => x !== id);
+  } else {
     ST.completed.push(id);
-    ST.overflow=ST.overflow.filter(x=>x!==id);
-    const task=getTask(id);
-    const subj=task?.subject||'General';
-    const reward=REWARDS_BY_SUBJECT[subj]||REWARDS_BY_SUBJECT['General'];
+    ST.overflow = ST.overflow.filter(x => x !== id);
+    const task = getTask(id);
+    const subj = task?.subject || 'General';
+    const reward = REWARDS[subj] || REWARDS['General'];
     showToast(`${reward.fw}: ${reward.msg.split('.')[0]}`);
-    setTimeout(()=>{
-      const today=isoNow();
-      const all=getTasksForDate(today,false);
-      const pending=all.filter(t=>!isCompleted(t.id));
-      if(pending.length===0&&all.length>0)renderToday();
-    },300);
   }
   saveST();
   renderAll();
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // TASK CARD HTML
-// ============================================================
-function taskCardHTML(task,showFrom){
-  const done=isCompleted(task.id);
-  const isR=!!ST.rescheduled[task.id]&&ST.rescheduled[task.id]!==task.originalDate;
-  const from=showFrom&&isR?`<div class="task-from">↩ carried from ${fmtDate(task.originalDate)}</div>`:'';
-  return`<div class="task-card${done?' done':''}${isR&&showFrom?' rescheduled':''}" id="tc_${task.id}">
+// ─────────────────────────────────────────────
+function taskCardHTML(task, showFrom) {
+  const done = isCompleted(task.id);
+  const isR = !!ST.rescheduled[task.id] && ST.rescheduled[task.id] !== task.originalDate;
+  const isSun = task.sunday;
+  const from = showFrom && isR ? `<div class="task-from">↩ carried from ${fmtDate(task.originalDate)}</div>` : '';
+  return `<div class="task-card${done?' done':''}${isR&&showFrom?' rescheduled':''}${isSun?' sunday-task':''}" id="tc_${task.id}">
     ${from}<div class="task-row">
       <button class="chk${done?' checked':''}" onclick="toggleComplete('${task.id}')">${done?'✓':''}</button>
       <div class="task-body">
@@ -601,116 +626,308 @@ function taskCardHTML(task,showFrom){
   </div>`;
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // RENDER TODAY
-// ============================================================
-function renderToday(){
-  const today=isoNow();const dn=dayNum();const ph=phaseInfo(dn);
-  const el=document.getElementById('tab-today');
-  if(today===examISO()){el.innerHTML=`<div class="exam-banner"><div class="exam-banner-title">EXAM DAY</div><div style="font-size:14px;opacity:.8">APSC CCE Prelims 2026</div><div class="exam-seq">Polity → Assam History → Assam GK → CA → Economy → Env &amp; Ecology → S&amp;T → Geography</div></div>`;return;}
-  const all=getTasksForDate(today,false);
-  const pending=all.filter(t=>!isCompleted(t.id));
-  const done=all.filter(t=>isCompleted(t.id));
-  const pct=all.length?Math.round(done.length/all.length*100):0;
-  const sorted=[...pending].sort((a,b)=>{const aR=!!ST.rescheduled[a.id];const bR=!!ST.rescheduled[b.id];if(aR!==bR)return aR?-1:1;return b.urgency-a.urgency;});
-  let html=`<div class="today-header">
-    <div class="today-date">${fmtDate(today)}</div>
-    <div class="today-meta"><span class="pd-inline pd${ph.n}"></span>Day ${dn} of 84 &nbsp;·&nbsp; Phase ${ph.n}: ${ph.name}</div>
-    <div class="today-prog-row"><div class="today-prog-track"><div class="today-prog-fill" style="width:${pct}%"></div></div><div class="today-prog-text">${done.length}/${all.length} done</div></div>
-  </div>`;
-  if(ST.overflow.filter(id=>!isCompleted(id)).length>0)html+=`<div class="overflow-warn">⚠ ${ST.overflow.filter(id=>!isCompleted(id)).length} task(s) couldn't be rescheduled — too close to exam. Consider completing today.</div>`;
-  if(all.length===0)html+=`<div class="empty-day">No tasks scheduled for today. Check the Schedule tab.</div>`;
-  if(pending.length===0&&done.length>0){
-    const r=FULL_DAY_REWARDS[dn%FULL_DAY_REWARDS.length];
-    html+=`<div class="all-done"><div class="all-done-icon">✓</div><div class="all-done-title">All done for today.</div><div class="all-done-fw">${r.fw}</div><div class="all-done-msg">${r.msg}</div></div>`;
+// ─────────────────────────────────────────────
+function renderToday() {
+  const today = isoNow();
+  const dn = dayNum();
+  const ph = phaseInfo(dn);
+  const el = document.getElementById('tab-today');
+  const examDay = localISO(new Date(2026,6,5));
+
+  if (today === examDay) {
+    el.innerHTML = `<div class="exam-banner"><div class="exam-banner-title">EXAM DAY</div><div style="font-size:14px;opacity:.8">APSC CCE Prelims 2026</div><div class="exam-seq">Polity → Assam History → Assam GK → CA → Economy → Env & Ecology → S&T → Geography</div></div>`;
+    return;
   }
-  if(sorted.length>0){html+=`<div class="section-lbl">To do today</div>`;sorted.forEach(t=>{const isR=!!ST.rescheduled[t.id]&&ST.rescheduled[t.id]!==t.originalDate;html+=taskCardHTML(t,isR);});}
-  if(done.length>0){html+=`<div class="section-lbl">Completed</div>`;done.forEach(t=>{html+=taskCardHTML(t,false);});}
-  if(sorted.length>0)html+=`<button class="reshuffle-btn" onclick="handleReshuffle()">Reshuffle missed tasks to tomorrow →</button>`;
-  el.innerHTML=html;
+
+  const isSun = isSunday(today);
+  const all = getTasksForDate(today, false);
+  const pending = all.filter(t => !isCompleted(t.id));
+  const done = all.filter(t => isCompleted(t.id));
+  const pct = all.length ? Math.round(done.length / all.length * 100) : 0;
+
+  const sorted = [...pending].sort((a, b) => {
+    const aR = !!ST.rescheduled[a.id];
+    const bR = !!ST.rescheduled[b.id];
+    if (aR !== bR) return aR ? -1 : 1;
+    return b.urgency - a.urgency;
+  });
+
+  let html = `<div class="today-header">
+    <div class="today-date">${fmtDate(today)}${isSun ? ' — Revision Sunday' : ''}</div>
+    <div class="today-meta">
+      <span class="pd-inline ${isSun?'pd-sun':'pd'+ph.n}"></span>
+      Day ${dn} of ${TOTAL_DAYS} &nbsp;·&nbsp; ${isSun ? 'Revision Day — no new content' : 'Phase '+ph.n+': '+ph.name}
+    </div>
+    <div class="today-prog-row">
+      <div class="today-prog-track"><div class="today-prog-fill" style="width:${pct}%;background:${isSun?'var(--purple)':'var(--forest)'}"></div></div>
+      <div class="today-prog-text" style="color:${isSun?'var(--purple)':'var(--forest)'}">${done.length}/${all.length} done</div>
+    </div>
+  </div>`;
+
+  if (isSun) {
+    html += `<div class="sunday-banner">
+      <div class="sunday-title">Revision Sunday</div>
+      <div class="sunday-rule">Zero new content today. Revise the week's topics, compile CA, re-drill PYQ on weak areas. Spaced repetition is where real learning is locked in.</div>
+    </div>`;
+  } else {
+    html += `<div class="ca-banner">
+      <div class="ca-icon">CA</div>
+      <div><div class="ca-text">30 min Current Affairs — every day, no exceptions</div><div class="ca-sub">Assam Tribune (state) · PIB (national) · The Hindu (international) · Assam events in separate column</div></div>
+    </div>`;
+  }
+
+  if (ST.overflow.filter(id => !isCompleted(id)).length > 0) {
+    const ov = ST.overflow.filter(id => !isCompleted(id)).length;
+    html += `<div class="overflow-warn">⚠ ${ov} task(s) couldn't be rescheduled — too close to exam. Consider completing today.</div>`;
+  }
+
+  if (all.length === 0) {
+    html += `<div style="background:var(--cream);border-radius:var(--r);padding:20px;text-align:center;color:var(--ink-light);font-size:14px">No tasks scheduled for today. Check the Schedule tab.</div>`;
+  }
+
+  if (pending.length === 0 && done.length > 0) {
+    const r = isSun
+      ? SUNDAY_DONE_REWARDS[dn % SUNDAY_DONE_REWARDS.length]
+      : FULL_DAY_REWARDS[dn % FULL_DAY_REWARDS.length];
+    html += `<div class="all-done">
+      <div class="all-done-icon">✓</div>
+      <div class="all-done-title">${isSun ? 'Revision Sunday complete.' : 'All done for today.'}</div>
+      <div class="all-done-fw">${r.fw}</div>
+      <div class="all-done-msg">${r.msg}</div>
+    </div>`;
+  }
+
+  if (sorted.length > 0) {
+    html += `<div class="section-lbl">To do today</div>`;
+    sorted.forEach(t => { html += taskCardHTML(t, !!ST.rescheduled[t.id] && ST.rescheduled[t.id] !== t.originalDate); });
+  }
+  if (done.length > 0) {
+    html += `<div class="section-lbl">Completed</div>`;
+    done.forEach(t => { html += taskCardHTML(t, false); });
+  }
+  if (sorted.length > 0 && !isSun) {
+    html += `<button class="reshuffle-btn" onclick="handleReshuffle()">Reshuffle missed tasks to tomorrow →</button>`;
+  }
+
+  el.innerHTML = html;
 }
 
-function handleReshuffle(){const c=reshuffleTodayMissed();renderAll();showToast(c>0?`Antifragility: ${c} task(s) rescheduled — plan just got stronger`:'No pending tasks to reshuffle');}
+function handleReshuffle() {
+  const c = reshuffleTodayMissed();
+  renderAll();
+  showToast(c > 0 ? `Antifragility: ${c} task(s) rescheduled — plan stronger` : 'No pending tasks to reshuffle');
+}
 
-// ============================================================
-// RENDER DASHBOARD (with VORP)
-// ============================================================
-function renderDashboard(){
-  const dn=dayNum(),dl=daysLeft(),ph=phaseInfo(dn);
-  const doneCount=ST.completed.length,totalCount=TASKS.length,pct=Math.round(doneCount/totalCount*100);
-  const GUIDANCE={1:'Plan starts today April 13 — Day 1. Take PYQ 2024 and 2023 mocks in the first 2 days. Lock History and Polity. CA habit begins today — no exceptions.',2:'Assam GK is your daily anchor — 50 min minimum. Economy is now a major subject. One full mock every Sunday.',3:'Full syllabus rotation. Two mocks per week. Error log is your most valuable tool. Target 155+ consistently.',4:'No new material after Jun 25. Only revision and mocks. CA final sweep. Aim for 162+ in your last mock before exam day.'};
-  const ALLOC=[{m:50,n:'Assam (History + GK)',note:'~30 Qs — highest VORP block'},{m:20,n:'Current Affairs',note:'Non-negotiable every day'},{m:20,n:'Polity',note:'Stable ~14 Qs'},{m:15,n:'Economy',note:'18 Qs in 2024 — rising fast'},{m:15,n:'Rotating (Env / S&T / Geo)',note:'Phase-dependent focus'}];
-  const redQueenMsg=ph.n===4?'<div style="background:var(--red-light);border-left:4px solid var(--red);border-radius:0 var(--rs) var(--rs) 0;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--red);line-height:1.6"><strong>Red Queen — Final Phase:</strong> Most candidates are slowing down right now. You should be accelerating. Effort in the last 14 days is worth 3× its Week 1 equivalent. The race is not over until July 5.</div>':'';
-  document.getElementById('tab-dashboard').innerHTML=`
+// ─────────────────────────────────────────────
+// RENDER DASHBOARD
+// ─────────────────────────────────────────────
+function renderDashboard() {
+  const dn = dayNum(), dl = daysLeft(), ph = phaseInfo(dn);
+  const doneCount = ST.completed.length, total = TASKS.length;
+  const pct = Math.round(doneCount / total * 100);
+
+  const GUIDANCE = {
+    1: 'Two diagnostic PYQ mocks in days 1–2. Map your exact gaps. Lock Assam History and Polity from source. CA habit begins today — Assam Tribune + PIB, 30 minutes, no exceptions.',
+    2: 'Assam GK from Lucent IAS — chapter by chapter, 50 min daily. Economy is now a major subject (18 Qs in 2024). Subject-wise mocks after each cluster. CA 30 min every day.',
+    3: 'Full 100Q mocks begin. Two per week. Error log is your primary study tool now. Target 150+ and rising. No new subjects — only consolidation and mock analysis.',
+    4: 'No new material. Revision, mocks, error log, and CA sweep only. Every hour in this phase is worth 3× its Week 1 equivalent. Red Queen — keep running.'
+  };
+  const ALLOC = [
+    {m:50, n:'Assam (GK + History)', note:'Highest VORP — source-first from Lucent IAS'},
+    {m:30, n:'Current Affairs', note:'Every day without exception — 30 min'},
+    {m:20, n:'Polity', note:'Stable ~14 Qs — lock it early'},
+    {m:15, n:'Economy', note:'18 Qs in 2024 — rising fast'},
+    {m:5, n:'Distractor notebook', note:'5 min daily — how does APSC trick you?'},
+  ];
+  const VORP_DATA = [
+    {s:'Assam GK', vorp:9, note:'UPSC candidates score ~2/10 here'},
+    {s:'Assam History', vorp:8, note:'PYQ-specific patterns give huge edge'},
+    {s:'Economy', vorp:7, note:'Rising fast — 18 Qs in 2024'},
+    {s:'Assam Geography', vorp:7, note:'High VORP, low time investment'},
+    {s:'Current Affairs', vorp:6, note:'Assam events separate you'},
+    {s:'Env & Ecology', vorp:5, note:'Repeatable conventions questions'},
+    {s:'S & T', vorp:5, note:'Class 10 level — highest ROI'},
+    {s:'Polity', vorp:3, note:'Everyone prepares this equally'},
+    {s:'India / World Geo', vorp:2, note:'Low differentiation'},
+    {s:'National History', vorp:1, note:'1 question in 2024 — near zero VORP'},
+  ];
+
+  const redQ = ph.n === 4 ? `<div style="background:var(--red-light);border-left:4px solid var(--red);border-radius:0 var(--rs) var(--rs) 0;padding:12px 14px;margin-bottom:12px;font-size:13px;color:var(--red);line-height:1.6"><strong>Red Queen — Final Phase:</strong> Most candidates are slowing down. You should be accelerating. Effort now is worth 3× its April equivalent.</div>` : '';
+
+  document.getElementById('tab-dashboard').innerHTML = `
     <div class="metric-grid">
       <div class="metric"><div class="mlbl">Days left</div><div class="mval">${dl}</div></div>
       <div class="metric"><div class="mlbl">Today</div><div class="mval">Day ${dn}</div></div>
       <div class="metric"><div class="mlbl">Tasks done</div><div class="mval">${doneCount}</div></div>
       <div class="metric"><div class="mlbl">Progress</div><div class="mval" style="font-size:16px">${pct}%</div></div>
     </div>
-    ${redQueenMsg}
+    ${redQ}
     <div class="guidance-card"><div class="g-title">Phase ${ph.n} — ${ph.name}</div>${GUIDANCE[ph.n]}</div>
     <div class="card">
-      <div class="card-title">Daily 2-hour allocation</div>
-      ${ALLOC.map(a=>`<div class="alloc-row"><div class="alloc-time">${a.m}m</div><div class="alloc-info"><div class="alloc-name">${a.n}</div><div class="alloc-note">${a.note}</div></div><div class="alloc-bar-wrap"><div class="alloc-bar" style="width:${Math.round(a.m/120*100)}%"></div></div></div>`).join('')}
+      <div class="card-title">Daily structure — 2 hours</div>
+      ${ALLOC.map(a => `<div class="alloc-row">
+        <div class="alloc-time">${a.m}m</div>
+        <div class="alloc-info"><div class="alloc-name">${a.n}</div><div class="alloc-note">${a.note}</div></div>
+        <div class="alloc-bar-wrap"><div class="alloc-bar" style="width:${Math.round(a.m/120*100)}%"></div></div>
+      </div>`).join('')}
+    </div>
+    <div class="card" style="background:var(--purple-light);border-color:rgba(83,74,183,.15)">
+      <div class="card-title" style="color:var(--purple)">Sunday revision system</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.65">Every Sunday is <strong>zero new content</strong>. Revise that week's topics (30 min), compile CA weekly notes (30 min), re-drill PYQ on weak areas (1 hr), review error log (30 min). This spaced repetition cycle defeats the Ebbinghaus Forgetting Curve — without it, you forget 67% of content within a week.</div>
     </div>
     <div class="card">
       <div class="card-title">VORP — value over replacement candidate</div>
-      <div style="font-size:12px;color:var(--ink-light);margin-bottom:12px;line-height:1.5">Your "replacement" is a UPSC-trained candidate. VORP shows which subjects give you the biggest advantage over them per hour invested.</div>
-      ${VORP_DATA.map(v=>{
-        const pct=Math.round(v.vorp/10*100);
-        const col=v.vorp>=8?'#E24B4A':v.vorp>=6?'#C47A2B':v.vorp>=4?'#059669':'#9CA3AF';
-        const lbl=v.vorp>=8?'Very High':v.vorp>=6?'High':v.vorp>=4?'Medium':'Low';
-        return`<div class="vorp-row"><div class="vorp-subj">${v.s}<div style="font-size:11px;color:var(--ink-light)">${v.note}</div></div><div class="vorp-bar-wrap"><div class="vorp-bar" style="width:${pct}%;background:${col}"></div></div><div class="vorp-label" style="color:${col}">${lbl}</div></div>`;
+      ${VORP_DATA.map(v => {
+        const pct = Math.round(v.vorp / 10 * 100);
+        const col = v.vorp >= 8 ? '#E24B4A' : v.vorp >= 6 ? '#C47A2B' : v.vorp >= 4 ? '#059669' : '#9CA3AF';
+        const lbl = v.vorp >= 8 ? 'Very High' : v.vorp >= 6 ? 'High' : v.vorp >= 4 ? 'Medium' : 'Low';
+        return `<div class="vorp-row">
+          <div class="vorp-subj">${v.s}<div style="font-size:11px;color:var(--ink-light)">${v.note}</div></div>
+          <div class="vorp-bar-wrap"><div class="vorp-bar" style="width:${pct}%;background:${col}"></div></div>
+          <div class="vorp-label" style="color:${col}">${lbl}</div>
+        </div>`;
       }).join('')}
     </div>
     <div class="card">
       <div class="card-title">Key PYQ insights</div>
-      ${[{f:'Critical',c:'fc',t:'National History: 10→5→1 question. Your biggest strength is nearly irrelevant now.'},{f:'Critical',c:'fc',t:'Economy: 6→11→18 questions. 2024 asked Rostow, Lorenz, Gini. Treat as major subject.'},{f:'Watch',c:'fw',t:'Assam History + GK + Geography = ~30 Qs. This single block decides your result.'},{f:'Opportunity',c:'fo',t:'S&T Class 10 physics/chemistry appears every year. Free marks with 2 days prep.'},].map(i=>`<div class="insight-row"><span class="iflag ${i.c}">${i.f}</span><span class="itext">${i.t}</span></div>`).join('')}
+      ${[
+        {f:'Critical',c:'fc',t:'National History: 10→5→1 question. Do not over-invest here.'},
+        {f:'Critical',c:'fc',t:'Economy: 6→11→18 questions. 2024 asked Rostow, Lorenz, Gini. Major subject now.'},
+        {f:'Watch',c:'fw',t:'Assam History + GK + Geography = ~30 Qs. This block alone decides your result.'},
+        {f:'Opportunity',c:'fo',t:'S&T Class 10 level appears every year. Free marks — 2 days of prep, 9 questions.'},
+      ].map(i => `<div class="insight-row"><span class="iflag ${i.c}">${i.f}</span><span class="itext">${i.t}</span></div>`).join('')}
     </div>`;
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // RENDER SCHEDULE
-// ============================================================
-let schedWk=1;
-function renderSchedule(wkNum){
-  schedWk=wkNum;
-  const today=isoNow();
-  const weekBtns=SD.map(wk=>{const wkD=TASKS.filter(t=>t.wk===wk.wk&&isCompleted(t.id)).length;const act=wk.wk===wkNum;return`<button class="wk-btn${act?' active':''}" onclick="renderSchedule(${wk.wk})">Wk ${wk.wk}${wkD>0?`<span class="wk-done">${wkD}</span>`:''}</button>`;}).join('');
-  const wk=SD.find(w=>w.wk===wkNum);
-  const dayRows=wk.days.map((day,di)=>{
-    const dIdx=(wk.wk-1)*7+di;
-    const d=new Date(2026,3,13);d.setDate(d.getDate()+dIdx);
-    const iso=localISO(d);
-    const isPast=iso<today,isToday=iso===today;
-    const b1=TASKS.find(t=>t.wk===wkNum&&t.di===di&&t.bl===1);
-    const b2=TASKS.find(t=>t.wk===wkNum&&t.di===di&&t.bl===2);
-    const tr=(t)=>{if(!t)return'';const done=isCompleted(t.id);const resched=ST.rescheduled[t.id];const movedAway=resched&&resched!==iso;const isIn=t.originalDate!==iso&&getSchedDate(t.id)===iso;let badge='';if(movedAway)badge=`<span class="badge badge-moved">→ ${fmtDate(resched)}</span>`;if(isIn)badge=`<span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span>`;return`<div class="sched-task${done?' done-task':''}${movedAway?' moved-away':''}${isIn?' incoming':''}"><span class="sched-dot" style="background:${t.color}"></span><span class="sched-txt">${t.text}</span>${badge}</div>`;};
-    const incoming=TASKS.filter(t=>t.wk!==wkNum||t.di!==di).filter(t=>getSchedDate(t.id)===iso&&!isCompleted(t.id));
-    return`<div class="sched-day${isToday?' is-today':''}${isPast&&!isToday?' is-past':''}"><div class="sched-day-lbl${isToday?' is-today-lbl':''}">${fmtDate(iso)}${isToday?' · Today':''}</div>${tr(b1)}${tr(b2)}${incoming.map(t=>`<div class="sched-task incoming"><span class="sched-dot" style="background:${t.color}"></span><span class="sched-txt">${t.text}</span><span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span></div>`).join('')}</div>`;
+// ─────────────────────────────────────────────
+let schedWk = 1;
+function renderSchedule(wkNum) {
+  schedWk = wkNum;
+  const today = isoNow();
+  const weekBtns = SD.map(wk => {
+    const wkD = TASKS.filter(t => t.wk === wk.wk && isCompleted(t.id)).length;
+    return `<button class="wk-btn${wk.wk===wkNum?' active':''}" onclick="renderSchedule(${wk.wk})">Wk ${wk.wk}${wkD>0?`<span class="wk-done">${wkD}</span>`:''}</button>`;
   }).join('');
-  document.getElementById('tab-schedule').innerHTML=`<div class="week-tabs">${weekBtns}</div><div class="card"><div class="week-hdr"><div class="week-lbl">Week ${wk.wk} — ${wk.focus}</div><span class="pbadge ph${wk.ph}">Phase ${wk.ph}</span></div>${dayRows}</div>`;
+  const wk = SD.find(w => w.wk === wkNum);
+  const dayRows = wk.days.map((day, di) => {
+    const dIdx = (wk.wk - 1) * 7 + di;
+    const d = new Date(2026, 3, 17); d.setDate(d.getDate() + dIdx);
+    const iso = localISO(d);
+    const isPast = iso < today, isToday = iso === today;
+    const isSun = !!day.sunday;
+    const b1 = TASKS.find(t => t.wk === wkNum && t.di === di && t.bl === 1);
+    const b2 = TASKS.find(t => t.wk === wkNum && t.di === di && t.bl === 2);
+    const tr = (t) => {
+      if (!t) return '';
+      const done = isCompleted(t.id);
+      const resched = ST.rescheduled[t.id];
+      const moved = resched && resched !== iso;
+      const isIn = t.originalDate !== iso && getSchedDate(t.id) === iso;
+      let badge = '';
+      if (moved) badge = `<span class="badge badge-moved">→ ${fmtDate(resched)}</span>`;
+      if (isIn) badge = `<span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span>`;
+      return `<div class="sched-task${done?' done-task':''}${moved?' moved-away':''}${isIn?' incoming':''}">
+        <span class="sched-dot" style="background:${t.color}"></span>
+        <span class="sched-txt">${t.text}</span>${badge}
+      </div>`;
+    };
+    const incoming = TASKS.filter(t => (t.wk !== wkNum || t.di !== di) && getSchedDate(t.id) === iso && !isCompleted(t.id));
+    const lblCls = `sched-day-lbl${isToday?' is-today-lbl':''}${isSun?' sun-lbl':''}`;
+    const sunChip = isSun ? `<span class="sun-chip">Revision</span>` : '';
+    return `<div class="sched-day${isToday?' is-today':''}${isPast&&!isToday?' is-past':''}${isSun&&!isToday?' is-sunday':''}">
+      <div class="${lblCls}">${fmtDate(iso)}${isToday?' · Today':''}${sunChip}</div>
+      ${tr(b1)}${tr(b2)}
+      ${incoming.map(t => `<div class="sched-task incoming"><span class="sched-dot" style="background:${t.color}"></span><span class="sched-txt">${t.text}</span><span class="badge badge-incoming">↩ from ${fmtDate(t.originalDate)}</span></div>`).join('')}
+    </div>`;
+  }).join('');
+  document.getElementById('tab-schedule').innerHTML = `
+    <div class="week-tabs">${weekBtns}</div>
+    <div class="card">
+      <div class="week-hdr"><div class="week-lbl">Week ${wk.wk} — ${wk.focus}</div><span class="pbadge ph${wk.ph}">Phase ${wk.ph}</span></div>
+      ${dayRows}
+    </div>`;
 }
 
-// ============================================================
+// ─────────────────────────────────────────────
 // RENDER SUBJECTS
-// ============================================================
-function renderSubjects(){
-  const SUBJS=[{n:'Current Affairs',qs:15,p:'critical',note:'Daily non-negotiable. Assam-centric column.'},{n:'Polity',qs:14,p:'maintain',note:'Stable ~14 Qs. Most reliable scoring block.'},{n:'Assam History',qs:13,p:'critical',note:'Ahom, epigraphs, Freedom movement.'},{n:'Economy',qs:12,p:'high',note:'6→11→18 Qs. Rostow, Lorenz, Gini.'},{n:'Assam GK',qs:10,p:'critical',note:'Tribes, culture, festivals, schemes, awards.'},{n:'Env & Ecology',qs:10,p:'high',note:'Protected areas NE, conventions, SDGs.'},{n:'S&T',qs:9,p:'high',note:'Class 10 physics/chemistry = free marks.'},{n:'Assam Geography',qs:7,p:'high',note:'Rivers, districts, borders, oil fields.'},{n:'India/World Geo',qs:5,p:'maintain',note:'Declining. Quick revision only.'},{n:'National History',qs:5,p:'maintain',note:'10→5→1 Qs. Do NOT over-invest.'}];
-  const TRENDS=[['Polity',14,14,13,'→'],['Current Affairs',20,15,9,'↓'],['Assam History',14,10,14,'→'],['Economy',6,11,18,'↑↑'],['Assam GK',6,14,10,'↑'],['Env & Ecology',10,8,11,'→'],['S&T',4,13,10,'↑'],['Assam Geography',6,7,8,'↑'],['National History',10,5,1,'↓↓'],['India/World Geo',8,2,5,'↓']];
-  const pC={critical:'p-crit',high:'p-high',maintain:'p-maint'},bC={critical:'bar-c',high:'bar-h',maintain:'bar-m'};
-  document.getElementById('tab-subjects').innerHTML=`
-    <div class="card"><div class="card-title">Avg questions per subject (2022–2024)</div>${SUBJS.map(s=>`<div class="subject-row"><div class="subj-hdr"><div class="subj-name">${s.n}<span class="p-pill ${pC[s.p]}">${s.p}</span></div><div class="subj-qs">~${s.qs}</div></div><div class="subj-bar-track"><div class="subj-bar-fill ${bC[s.p]}" style="width:${s.qs}%"></div></div><div class="subj-note">${s.note}</div></div>`).join('')}</div>
-    <div class="card"><div class="card-title">Year-on-year question count</div><div style="overflow-x:auto"><table class="trend-table"><thead><tr><th style="min-width:110px">Subject</th><th>2022</th><th>2023</th><th>2024</th><th>Trend</th></tr></thead><tbody>${TRENDS.map(r=>{const tc=r[4].includes('↑')?'tu':r[4].includes('↓')?'td':'tn';return`<tr><td>${r[0]}</td><td style="text-align:center">${r[1]}</td><td style="text-align:center">${r[2]}</td><td style="text-align:center">${r[3]}</td><td style="text-align:center" class="${tc}">${r[4]}</td></tr>`;}).join('')}</tbody></table></div></div>`;
+// ─────────────────────────────────────────────
+function renderSubjects() {
+  const SUBJS = [
+    {n:'Current Affairs',qs:15,p:'critical',note:'Daily 30 min — Assam Tribune + PIB + The Hindu'},
+    {n:'Polity',qs:14,p:'maintain',note:'Stable ~14 Qs — most reliable scoring block'},
+    {n:'Assam History',qs:13,p:'critical',note:'PYQ-mapped: Ahom, epigraphs, Freedom movement'},
+    {n:'Economy',qs:12,p:'high',note:'6→11→18 Qs. Rostow, Lorenz, Gini, fiscal tools'},
+    {n:'Assam GK',qs:10,p:'critical',note:'Source-first from Lucent IAS — cannot be mocked without reading'},
+    {n:'Env & Ecology',qs:10,p:'high',note:'Protected areas NE, conventions, SDGs'},
+    {n:'S&T',qs:9,p:'high',note:'Class 10 physics/chemistry — free marks with 2 days prep'},
+    {n:'Assam Geography',qs:7,p:'high',note:'Rivers, districts, borders, oil fields'},
+    {n:'India/World Geo',qs:5,p:'maintain',note:'Declining — quick PYQ-mapped revision only'},
+    {n:'National History',qs:5,p:'maintain',note:'10→5→1 Qs. Minimal investment only'},
+  ];
+  const TRENDS = [['Polity',14,14,13,'→'],['Current Affairs',20,15,9,'↓'],['Assam History',14,10,14,'→'],['Economy',6,11,18,'↑↑'],['Assam GK',6,14,10,'↑'],['Env & Ecology',10,8,11,'→'],['S&T',4,13,10,'↑'],['Assam Geography',6,7,8,'↑'],['National History',10,5,1,'↓↓'],['India/World Geo',8,2,5,'↓']];
+  const pC = {critical:'p-crit',high:'p-high',maintain:'p-maint'};
+  const bC = {critical:'bar-c',high:'bar-h',maintain:'bar-m'};
+  document.getElementById('tab-subjects').innerHTML = `
+    <div class="card">
+      <div class="card-title">Avg questions per subject (2022–2024 PYQ)</div>
+      ${SUBJS.map(s => `<div class="subject-row">
+        <div class="subj-hdr"><div class="subj-name">${s.n}<span class="p-pill ${pC[s.p]}">${s.p}</span></div><div class="subj-qs">~${s.qs}</div></div>
+        <div class="subj-bar-track"><div class="subj-bar-fill ${bC[s.p]}" style="width:${s.qs}%"></div></div>
+        <div class="subj-note">${s.note}</div>
+      </div>`).join('')}
+    </div>
+    <div class="card">
+      <div class="card-title">Year-on-year question count</div>
+      <div style="overflow-x:auto"><table class="trend-table">
+        <thead><tr><th style="min-width:110px">Subject</th><th>2022</th><th>2023</th><th>2024</th><th>Trend</th></tr></thead>
+        <tbody>${TRENDS.map(r => {const tc=r[4].includes('↑')?'tu':r[4].includes('↓')?'td':'tn';return`<tr><td>${r[0]}</td><td style="text-align:center">${r[1]}</td><td style="text-align:center">${r[2]}</td><td style="text-align:center">${r[3]}</td><td style="text-align:center" class="${tc}">${r[4]}</td></tr>`;}).join('')}</tbody>
+      </table></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Distractor pattern notebook</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:10px">APSC uses 6 recurring distractor patterns. After each wrong answer, classify it. This is how you learn the language of the exam.</div>
+      ${['Factual flip — correct statement, one fact reversed','Year swap — correct event, wrong date','Name swap — correct event, wrong person','Partial truth — 2 of 3 statements correct','Condition reversal — not applicable → applicable','Geographic misplacement — correct fact, wrong district'].map((p,i) => {
+        const count = ST.distractors[i] || 0;
+        return `<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border)">
+          <div style="font-size:13px;flex:1">${p}</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;margin-left:10px">
+            <button class="elo-btn" onclick="adjustDistractor(${i},-1)" style="font-size:12px">−</button>
+            <span style="font-family:'Space Mono',monospace;font-size:14px;font-weight:700;color:var(--red);min-width:20px;text-align:center">${count}</span>
+            <button class="elo-btn" onclick="adjustDistractor(${i},+1)" style="font-size:12px">+</button>
+          </div>
+        </div>`;
+      }).join('')}
+      <div style="font-size:11px;color:var(--ink-light);margin-top:10px;line-height:1.5">After every mock, add a tally for each wrong answer. The highest count = your biggest vulnerability. Address it in the next study session.</div>
+    </div>`;
 }
 
-// ============================================================
-// RENDER SCORE (with Pythagorean Expectation + EV)
-// ============================================================
-function renderScore(){
-  const TARGETS=[{s:'Assam (Hist + GK + Geo)',qs:30,t:24,note:'80% needed here'},{s:'Polity',qs:14,t:12,note:'85%+ achievable'},{s:'Current Affairs',qs:15,t:11,note:'75% with daily CA habit'},{s:'Economy',qs:12,t:9,note:'75% if concepts locked'},{s:'Env + S&T',qs:19,t:14,note:'75% after focused prep'},{s:'Geography (all)',qs:12,t:8,note:'67% is sufficient'}];
-  document.getElementById('tab-score').innerHTML=`
+function adjustDistractor(i, d) {
+  if (!ST.distractors) ST.distractors = {};
+  ST.distractors[i] = Math.max(0, (ST.distractors[i] || 0) + d);
+  saveST();
+  const top = Object.entries(ST.distractors).sort((a,b) => b[1]-a[1])[0];
+  const names = ['Factual flip','Year swap','Name swap','Partial truth','Condition reversal','Geographic misplacement'];
+  if (top && top[1] > 0) showToast(`Top distractor: ${names[top[0]]} (${top[1]}×) — study this pattern`);
+  renderSubjects();
+}
+
+// ─────────────────────────────────────────────
+// RENDER SCORE
+// ─────────────────────────────────────────────
+function renderScore() {
+  const TARGETS = [
+    {s:'Assam (Hist + GK + Geo)',qs:30,t:24,note:'80% — highest VORP, must perform here'},
+    {s:'Polity',qs:14,t:12,note:'85%+ — your most reliable block'},
+    {s:'Current Affairs',qs:15,t:11,note:'75% — daily CA habit delivers this'},
+    {s:'Economy',qs:12,t:9,note:'75% — lock 6 key concept clusters'},
+    {s:'Env + S&T',qs:19,t:14,note:'75% — 2 days of focused prep each'},
+    {s:'Geography (all)',qs:12,t:8,note:'67% — sufficient, minimal investment'},
+  ];
+  document.getElementById('tab-score').innerHTML = `
     <div class="card">
       <div class="card-title">Score calculator — 100 Qs · 200 marks</div>
       <div class="slider-row"><span class="slider-lbl">Attempted</span><input type="range" min="60" max="100" step="1" value="90" id="sl-att" oninput="calcScore()"><span id="out-att" class="slider-val">90</span></div>
@@ -723,94 +940,107 @@ function renderScore(){
       <div id="sc-adv" class="score-advice adv-w"></div>
     </div>
     <div class="card">
-      <div class="card-title">Pythagorean Expectation — mock quality score</div>
-      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:12px">Like baseball's run differential, your PE score measures <em>true preparation quality</em> separate from lucky guesses. The gap between PE and actual score reveals whether you're over-attempting (lucky) or under-attempting (cautious).</div>
+      <div class="card-title">Pythagorean Expectation — true preparation quality</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:12px">Like baseball's run differential, your PE score measures your <em>true preparation level</em> separate from lucky guesses. A large gap between PE and actual reveals whether you're over-cautious (leaving marks) or over-ambitious (guessing too much).</div>
       <div class="slider-row"><span class="slider-lbl">Correct answers</span><input type="range" min="0" max="100" step="1" value="77" id="pe-c" oninput="calcPE()"><span id="pe-cout" class="slider-val">77</span></div>
       <div class="slider-row"><span class="slider-lbl">Wrong answers</span><input type="range" min="0" max="100" step="1" value="13" id="pe-w" oninput="calcPE()"><span id="pe-wout" class="slider-val">13</span></div>
       <div class="pe-grid">
         <div class="pe-card"><div class="pe-lbl">Actual score</div><div id="pe-actual" class="pe-val">147.5</div></div>
-        <div class="pe-card"><div class="pe-lbl">PE score</div><div id="pe-score" class="pe-val" style="color:var(--forest)">194</div></div>
-        <div class="pe-card"><div class="pe-lbl">Gap</div><div id="pe-gap" class="pe-val" style="color:var(--amber)">+47</div></div>
+        <div class="pe-card"><div class="pe-lbl">PE score</div><div id="pe-score" class="pe-val" style="color:var(--forest)">—</div></div>
+        <div class="pe-card"><div class="pe-lbl">Gap</div><div id="pe-gap" class="pe-val" style="color:var(--amber)">—</div></div>
         <div class="pe-card"><div class="pe-lbl">Accuracy</div><div id="pe-acc" class="pe-val">85.6%</div></div>
       </div>
-      <div id="pe-advice" class="pe-advice"></div>
-      <div style="font-size:11px;color:var(--ink-pale);text-align:center">PE = (Accuracy²) ÷ (Accuracy² + Error²) × 200</div>
+      <div id="pe-advice" class="pe-advice adv-w"></div>
+      <div style="font-size:11px;color:var(--ink-pale);text-align:center">PE = (Accuracy²) ÷ (Accuracy² + Error%) × 200</div>
     </div>
     <div class="card">
-      <div class="card-title">Expected Value calculator — should I attempt this question?</div>
-      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:12px">EV = (Confidence × 2) − ((1−Confidence) × 0.5). The break-even is 20% — if you have better than 1-in-5 odds of being right, attempting is mathematically correct.</div>
+      <div class="card-title">Expected Value — should I attempt this question?</div>
+      <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:12px">Break-even is 20% confidence. If you have better than 1-in-5 odds, attempting is mathematically correct. Most candidates set their personal threshold at 50–60% — far too cautious.</div>
       <div class="slider-row"><span class="slider-lbl">Confidence %</span><input type="range" min="0" max="100" step="1" value="40" id="ev-conf" oninput="calcEV()"><span id="ev-cout" class="slider-val">40%</span></div>
       <div class="ev-result">
         <div id="ev-verdict" class="ev-verdict" style="color:var(--forest)">ATTEMPT IT</div>
         <div id="ev-sub" class="ev-sub">Expected value: +0.65 marks</div>
-        <div id="ev-formula" class="ev-formula"></div>
+        <div id="ev-formula" style="font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-light);margin-top:6px"></div>
       </div>
-      <div style="background:var(--cream);border-radius:var(--rs);padding:12px;font-size:12px;color:var(--ink-light);line-height:1.6">Break-even = 20% confidence. Most candidates set their personal threshold at 50–60%, which is far too conservative. You're leaving 5–10 marks per paper on the table by skipping questions you half-know.</div>
+      <div style="background:var(--cream);border-radius:var(--rs);padding:12px;font-size:12px;color:var(--ink-light);line-height:1.6">You're leaving 5–10 marks per paper by being too cautious. The math says attempt if confidence > 20%.</div>
     </div>
     <div class="card">
       <div class="card-title">Subject-wise targets → 165+</div>
-      ${TARGETS.map(r=>`<div class="target-row"><div><div class="t-subj">${r.s}</div><div class="t-note">${r.note}</div></div><div class="t-score"><div class="t-frac">${r.t}/${r.qs}</div><div class="t-pct">${Math.round(r.t/r.qs*100)}%</div></div></div>`).join('')}
+      ${TARGETS.map(r => `<div class="target-row">
+        <div><div class="t-subj">${r.s}</div><div class="t-note">${r.note}</div></div>
+        <div class="t-score"><div class="t-frac">${r.t}/${r.qs}</div><div class="t-pct">${Math.round(r.t/r.qs*100)}%</div></div>
+      </div>`).join('')}
     </div>`;
-  calcScore();calcPE();calcEV();
+  calcScore(); calcPE(); calcEV();
 }
 
-function calcScore(){
-  const att=parseInt(document.getElementById('sl-att')?.value||90);
-  const acc=parseInt(document.getElementById('sl-acc')?.value||85);
-  const correct=Math.round(att*acc/100),wrong=att-correct;
-  const score=Math.round((correct*2-wrong*0.5)*10)/10;
-  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  el('out-att',att);el('out-acc',acc+'%');el('sc-c',correct);el('sc-w',wrong);el('sc-s',score);
-  const adv=document.getElementById('sc-adv');
-  if(adv){if(score>=162){adv.className='score-advice adv-g';adv.innerHTML=`<span class="adv-strong">Strong zone.</span> ${score} marks puts you likely above cutoff.`;}else if(score>=145){adv.className='score-advice adv-w';adv.innerHTML=`<span class="adv-strong">Borderline.</span> ${score} marks is risky. Push accuracy above 85%.`;}else{adv.className='score-advice adv-b';adv.innerHTML=`<span class="adv-strong">Below target.</span> ${score} marks. Focus on accuracy — one wrong costs 0.5 net.`;}}
-}
-
-function calcPE(){
-  const correct=parseInt(document.getElementById('pe-c')?.value||77);
-  const wrong=parseInt(document.getElementById('pe-w')?.value||13);
-  const attempted=correct+wrong;
-  const actual=Math.round((correct*2-wrong*0.5)*10)/10;
-  const acc=attempted>0?correct/attempted:0;
-  const err=1-acc;
-  const pe=acc===0?0:Math.round((acc*acc/(acc*acc+err*err))*200*10)/10;
-  const gap=Math.round((pe-actual)*10)/10;
-  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  el('pe-cout',correct);el('pe-wout',wrong);
-  el('pe-actual',actual);el('pe-score',pe);
-  el('pe-gap',(gap>=0?'+':'')+gap);
-  el('pe-acc',attempted>0?Math.round(acc*1000)/10+'%':'—');
-  const adv=document.getElementById('pe-advice');
-  if(adv){
-    if(Math.abs(gap)<10){adv.className='pe-advice adv-g';adv.innerHTML=`<strong>True form.</strong> Your PE score (${pe}) closely matches your actual score (${actual}). Your attempt selection is well-calibrated — you're neither over-nor under-attempting.`;}
-    else if(gap>10){adv.className='pe-advice adv-w';adv.innerHTML=`<strong>Pythagorean gap: +${gap}.</strong> Your accuracy quality (PE ${pe}) is higher than your actual score (${actual}). You're attempting too cautiously — at your accuracy rate, you should attempt more questions. The marks are there for the taking.`;}
-    else{adv.className='pe-advice adv-b';adv.innerHTML=`<strong>Pythagorean gap: ${gap}.</strong> Your actual score (${actual}) exceeds your PE score (${pe}). Some lucky guesses involved. This gap often reverts — focus on building real accuracy rather than attempting borderline questions.`;}
+function calcScore() {
+  const att = parseInt(document.getElementById('sl-att')?.value || 90);
+  const acc = parseInt(document.getElementById('sl-acc')?.value || 85);
+  const correct = Math.round(att * acc / 100), wrong = att - correct;
+  const score = Math.round((correct * 2 - wrong * 0.5) * 10) / 10;
+  const el = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  el('out-att', att); el('out-acc', acc + '%'); el('sc-c', correct); el('sc-w', wrong); el('sc-s', score);
+  const adv = document.getElementById('sc-adv');
+  if (adv) {
+    if (score >= 162) { adv.className = 'score-advice adv-g'; adv.innerHTML = `<span class="adv-strong">Strong zone.</span> ${score} marks puts you above the likely cutoff.`; }
+    else if (score >= 145) { adv.className = 'score-advice adv-w'; adv.innerHTML = `<span class="adv-strong">Borderline.</span> ${score} marks — push accuracy above 85%.`; }
+    else { adv.className = 'score-advice adv-b'; adv.innerHTML = `<span class="adv-strong">Below target.</span> ${score} marks. Focus accuracy — one wrong costs 0.5 net.`; }
   }
 }
 
-function calcEV(){
-  const conf=parseInt(document.getElementById('ev-conf')?.value||40)/100;
-  const ev=Math.round((conf*2-(1-conf)*0.5)*100)/100;
-  const el=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
-  el('ev-cout',Math.round(conf*100)+'%');
-  const verdict=document.getElementById('ev-verdict');
-  const sub=document.getElementById('ev-sub');
-  const formula=document.getElementById('ev-formula');
-  if(verdict&&sub&&formula){
-    if(ev>0){verdict.textContent='ATTEMPT IT';verdict.style.color='var(--forest)';sub.textContent=`Expected value: +${ev} marks per attempt`;}
-    else if(ev===0){verdict.textContent='BREAK EVEN';verdict.style.color='var(--amber)';sub.textContent='EV = 0. Marginal to attempt — decide based on gut.';}
-    else{verdict.textContent='SKIP IT';verdict.style.color='var(--red)';sub.textContent=`Expected value: ${ev} marks (negative — will cost you)`;}
-    formula.textContent=`(${Math.round(conf*100)}% × 2) − (${Math.round((1-conf)*100)}% × 0.5) = ${ev}`;
+function calcPE() {
+  const correct = parseInt(document.getElementById('pe-c')?.value || 77);
+  const wrong = parseInt(document.getElementById('pe-w')?.value || 13);
+  const att = correct + wrong;
+  const actual = Math.round((correct * 2 - wrong * 0.5) * 10) / 10;
+  const acc = att > 0 ? correct / att : 0, err = 1 - acc;
+  const pe = acc === 0 ? 0 : Math.round((acc * acc / (acc * acc + err * err)) * 200 * 10) / 10;
+  const gap = Math.round((pe - actual) * 10) / 10;
+  const el = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  el('pe-cout', correct); el('pe-wout', wrong); el('pe-actual', actual); el('pe-score', pe);
+  el('pe-gap', (gap >= 0 ? '+' : '') + gap); el('pe-acc', att > 0 ? Math.round(acc * 1000) / 10 + '%' : '—');
+  const adv = document.getElementById('pe-advice');
+  if (adv) {
+    if (Math.abs(gap) < 10) { adv.className = 'pe-advice adv-g'; adv.innerHTML = `<strong>True form.</strong> PE (${pe}) ≈ actual (${actual}). Your attempt selection is well-calibrated.`; }
+    else if (gap > 10) { adv.className = 'pe-advice adv-w'; adv.innerHTML = `<strong>+${gap} gap.</strong> Your accuracy quality is higher than your score. Attempt more questions — the marks are there.`; }
+    else { adv.className = 'pe-advice adv-b'; adv.innerHTML = `<strong>${gap} gap.</strong> Actual beats PE — some lucky guesses involved. Focus on real accuracy.`; }
   }
 }
 
-// ============================================================
-// RENDER STRATEGY (all frameworks + Elo ratings)
-// ============================================================
-function renderStrategy(){
-  const eloHTML=Object.entries(ST.elo).map(([subj,rating])=>{
-    const col=rating>=1400?'var(--forest)':rating>=1200?'var(--amber)':rating>=1000?'var(--ink-mid)':'var(--red)';
-    const tier=rating>=1400?'Strong':rating>=1200?'Good':rating>=1000?'Building':'Needs work';
-    return`<div class="elo-row">
+function calcEV() {
+  const conf = parseInt(document.getElementById('ev-conf')?.value || 40) / 100;
+  const ev = Math.round((conf * 2 - (1 - conf) * 0.5) * 100) / 100;
+  const el = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  el('ev-cout', Math.round(conf * 100) + '%');
+  const v = document.getElementById('ev-verdict'), s = document.getElementById('ev-sub'), f = document.getElementById('ev-formula');
+  if (v && s && f) {
+    if (ev > 0) { v.textContent = 'ATTEMPT IT'; v.style.color = 'var(--forest)'; s.textContent = `Expected value: +${ev} marks per attempt`; }
+    else if (ev === 0) { v.textContent = 'BREAK EVEN'; v.style.color = 'var(--amber)'; s.textContent = 'EV = 0. Marginal.'; }
+    else { v.textContent = 'SKIP IT'; v.style.color = 'var(--red)'; s.textContent = `EV: ${ev} marks (negative)`; }
+    f.textContent = `(${Math.round(conf*100)}% × 2) − (${Math.round((1-conf)*100)}% × 0.5) = ${ev}`;
+  }
+}
+
+// ─────────────────────────────────────────────
+// RENDER STRATEGY
+// ─────────────────────────────────────────────
+const FRAMEWORKS = [
+  {id:'pe',name:'Pythagorean Expectation',origin:'Bill James · Baseball Analytics',icon:'PE',iconBg:'#1B3D2F',iconColor:'#C47A2B',apscBg:'#F2F8F4',apscBorder:'#1B3D2F',insight:'A team\'s true performance is revealed by run differential, not win-loss record. Wins can be inflated by luck in close games. PE filters out noise and shows real preparation quality.',apsc:'Track PE score across mocks. If PE >> actual: you\'re being too cautious with attempts. If actual >> PE: lucky guesses that may not repeat. Your PE trend across 8 mocks is your true preparation curve — not individual results.'},
+  {id:'ev',name:'Expected Value',origin:'Poker Strategy · Decision Theory',icon:'EV',iconBg:'#534AB7',iconColor:'white',apscBg:'#EEEDFE',apscBorder:'#534AB7',insight:'Every decision has a long-run average outcome. Positive EV decisions are correct even when they sometimes fail.',apsc:'Break-even is 20% confidence. If you have >20% chance of being right, attempting is mathematically correct. Most candidates use 50–60% as their threshold. That\'s too conservative and costs 5–10 marks per paper.'},
+  {id:'vorp',name:'VORP — Value Over Replacement',origin:'Baseball Analytics · Sabermetrics',icon:'V+',iconBg:'#C47A2B',iconColor:'white',apscBg:'#FDF0E0',apscBorder:'#C47A2B',insight:'VORP measures how much better a player performs vs a freely available replacement. Not all study time has equal value.',apsc:'Your replacement candidate knows UPSC material only. Assam GK has maximum VORP — UPSC candidates score ~2/10 there. National History has near-zero VORP. Allocate study time by VORP, not comfort.'},
+  {id:'margin',name:'Margin Gains',origin:'Dave Brailsford · British Cycling',icon:'1%',iconBg:'#059669',iconColor:'white',apscBg:'#F0FDF4',apscBorder:'#059669',insight:'British Cycling won Olympic dominance by finding 1% improvements in every single factor. No single change was significant. Compound effect was transformational.',apsc:'Don\'t try to master Economy in one week. Lock the 6 APSC-recurring Economy clusters. Lock 8 Assam GK topic types. Each small specific improvement compounds. 2% gain in accuracy across 6 subjects = 12 extra marks.'},
+  {id:'elo',name:'Elo Rating System',origin:'Arpad Elo · Chess Federation',icon:'Elo',iconBg:'#D94B80',iconColor:'white',apscBg:'#FBEAF0',apscBorder:'#D94B80',insight:'Elo tracks skill dynamically — adjusts your rating after each performance. It self-corrects toward true ability and predicts future performance better than any single result.',apsc:'Rate each subject after each mock. Score above expected → tap +. Score below expected → tap −. Allocate study time each week to your lowest-rated subjects. Makes the plan self-correcting, not static.'},
+  {id:'spaced',name:'Spaced Repetition',origin:'Hermann Ebbinghaus · Memory Research',icon:'SR',iconBg:'#0F6E56',iconColor:'white',apscBg:'#E1F5EE',apscBorder:'#0F6E56',insight:'Without active recall, you forget 67% of new content within 24 hours and 80% within a week. Spaced review at increasing intervals defeats this exponential forgetting.',apsc:'Every Sunday is your spaced repetition session — non-negotiable. Learn Monday → quick recall Wednesday → Sunday full revision. This is why Sundays have zero new content. The revision is the most important session of the week, not the least.'},
+  {id:'redqueen',name:'Red Queen Effect',origin:'Leigh Van Valen · Evolutionary Biology',icon:'RQ',iconBg:'#A32D2D',iconColor:'white',apscBg:'#FCEBEB',apscBorder:'#A32D2D',insight:'You must keep running just to stay in the same place. Competitors who stop improving cause you to fall behind even if you maintain your current level.',apsc:'78 vacancies vs 280–330 in previous years. Everyone is pushing harder. Maintaining effort only keeps you at the same percentile. The last 14 days (Phase 4) are worth 3× their April equivalent because most candidates decelerate.'},
+  {id:'antifragile',name:'Antifragility',origin:'Nassim Taleb · Risk Philosophy',icon:'AF',iconBg:'#185FA5',iconColor:'white',apscBg:'#E6F1FB',apscBorder:'#185FA5',insight:'Fragile systems break under stress. Robust systems survive it. Antifragile systems get stronger from it.',apsc:'A bad mock is antifragile information. A missed task that reshuffles makes the plan antifragile. A topic you can\'t understand is a targeted opportunity. Build the habit: every failure makes the next session more targeted, not more anxious. The error log is your antifragility engine.'},
+];
+
+function renderStrategy() {
+  const eloHTML = Object.entries(ST.elo).map(([subj, rating]) => {
+    const col = rating >= 1400 ? 'var(--forest)' : rating >= 1200 ? 'var(--amber)' : rating >= 1000 ? 'var(--ink-mid)' : 'var(--red)';
+    const tier = rating >= 1400 ? 'Strong' : rating >= 1200 ? 'Good' : rating >= 1000 ? 'Building' : 'Needs work';
+    return `<div class="elo-row">
       <div class="elo-subj">${subj}<div style="font-size:11px;color:${col}">${tier}</div></div>
       <div style="display:flex;align-items:center;gap:6px">
         <button class="elo-btn" onclick="adjustElo('${subj}',-25)">−</button>
@@ -820,10 +1050,9 @@ function renderStrategy(){
     </div>`;
   }).join('');
 
-  document.getElementById('tab-strategy').innerHTML=`
-    <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:16px">Eight analytical frameworks from sports science, economics, and philosophy — each applied directly to your APSC preparation.</div>
-    ${FRAMEWORKS.map(fw=>`
-    <div class="fw-card">
+  document.getElementById('tab-strategy').innerHTML = `
+    <div style="font-size:13px;color:var(--ink-mid);line-height:1.6;margin-bottom:16px">Eight analytical frameworks applied directly to your APSC preparation. Each one changes how you study, not just how you think about studying.</div>
+    ${FRAMEWORKS.map(fw => `<div class="fw-card">
       <div class="fw-header">
         <div class="fw-icon" style="background:${fw.iconBg};color:${fw.iconColor}">${fw.icon}</div>
         <div><div class="fw-name">${fw.name}</div><div class="fw-origin">${fw.origin}</div></div>
@@ -831,65 +1060,65 @@ function renderStrategy(){
       <div class="fw-insight">${fw.insight}</div>
       <div class="fw-apsc" style="background:${fw.apscBg};border-color:${fw.apscBorder};color:var(--ink-mid)"><strong style="color:${fw.apscBorder}">Your APSC application:</strong> ${fw.apsc}</div>
     </div>`).join('')}
-    <div class="card" style="margin-top:4px">
+    <div class="card">
       <div class="card-title">Elo subject ratings — update after each mock</div>
-      <div style="font-size:12px;color:var(--ink-light);margin-bottom:12px;line-height:1.5">Rate your performance in each subject after every mock. Score above expected → tap +. Score below expected → tap −. Each adjustment is ±25 Elo points. Allocate extra study time to your lowest-rated subjects each week.</div>
+      <div style="font-size:12px;color:var(--ink-light);margin-bottom:12px;line-height:1.5">After every mock: subjects where you scored above expected → tap +. Below expected → tap −. Allocate extra study time to lowest-rated subjects each week. ±25 per adjustment.</div>
       ${eloHTML}
     </div>`;
 }
 
-function adjustElo(subj,delta){
-  if(!ST.elo)ST.elo={};
-  ST.elo[subj]=(ST.elo[subj]||1200)+delta;
-  ST.elo[subj]=Math.max(600,Math.min(2000,ST.elo[subj]));
-  saveST();renderStrategy();
-  showToast(`${subj} Elo: ${ST.elo[subj]}${delta>0?' ↑':' ↓'}`);
+function adjustElo(subj, delta) {
+  ST.elo[subj] = Math.max(600, Math.min(2000, (ST.elo[subj] || 1200) + delta));
+  saveST(); renderStrategy();
+  showToast(`${subj} Elo: ${ST.elo[subj]}${delta > 0 ? ' ↑' : ' ↓'}`);
 }
 
-// ============================================================
-// RENDER ALL
-// ============================================================
-let activeTab='today';
-function renderAll(){
+// ─────────────────────────────────────────────
+// RENDER ALL + HEADER
+// ─────────────────────────────────────────────
+let activeTab = 'today';
+function renderAll() {
   renderHeader();
-  if(activeTab==='today')renderToday();
-  else if(activeTab==='dashboard')renderDashboard();
-  else if(activeTab==='schedule')renderSchedule(schedWk);
-  else if(activeTab==='subjects')renderSubjects();
-  else if(activeTab==='score')renderScore();
-  else if(activeTab==='strategy')renderStrategy();
+  if (activeTab === 'today') renderToday();
+  else if (activeTab === 'dashboard') renderDashboard();
+  else if (activeTab === 'schedule') renderSchedule(schedWk);
+  else if (activeTab === 'subjects') renderSubjects();
+  else if (activeTab === 'score') renderScore();
+  else if (activeTab === 'strategy') renderStrategy();
 }
-
-function renderHeader(){
-  const dn=dayNum(),dl=daysLeft(),ph=phaseInfo(dn);
-  document.getElementById('phase-badge').textContent=`Phase ${ph.n}: ${ph.name}`;
-  document.getElementById('phase-badge').className=`pbadge ${ph.cls}`;
-  document.getElementById('day-counter').textContent=`Day ${dn} · ${dl} left`;
-  document.getElementById('prog-fill').style.width=`${Math.round(dn/84*100)}%`;
+function renderHeader() {
+  const dn = dayNum(), dl = daysLeft(), ph = phaseInfo(dn);
+  const today = isoNow();
+  const isSun = isSunday(today);
+  document.getElementById('phase-badge').textContent = isSun ? 'Revision Sunday' : `Phase ${ph.n}: ${ph.name}`;
+  document.getElementById('phase-badge').className = `pbadge ${isSun ? 'ph-sun' : ph.cls}`;
+  document.getElementById('day-counter').textContent = `Day ${dn} · ${dl} left`;
+  document.getElementById('prog-fill').style.width = `${Math.round(dn / TOTAL_DAYS * 100)}%`;
 }
-
-function showToast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.style.opacity='1';
-  clearTimeout(t._t);t._t=setTimeout(()=>{t.style.opacity='0';},3000);
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.style.opacity = '1';
+  clearTimeout(t._t); t._t = setTimeout(() => { t.style.opacity = '0'; }, 3200);
 }
-
-document.querySelectorAll('.tb').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tc').forEach(c=>c.classList.remove('active'));
+document.querySelectorAll('.tb').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tb').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tc').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
-    activeTab=btn.dataset.tab;
-    document.getElementById('tab-'+activeTab).classList.add('active');
+    activeTab = btn.dataset.tab;
+    document.getElementById('tab-' + activeTab).classList.add('active');
     renderAll();
   });
 });
 
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
 loadST();
-const autoN=autoCheckMissed();
-renderHeader();renderToday();renderDashboard();renderSchedule(1);renderSubjects();renderScore();renderStrategy();
-if(autoN>0)setTimeout(()=>showToast(`Antifragility: ${autoN} missed task(s) auto-rescheduled`),600);
-if('serviceWorker'in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+const autoN = autoCheckMissed();
+renderAll();
+if (autoN > 0) setTimeout(() => showToast(`Antifragility: ${autoN} missed task(s) auto-rescheduled`), 600);
+if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(() => {});
 </script>
 </body>
 </html>
